@@ -1,2 +1,2 @@
 <?php
-require('view/frontend/welcomeView.php');
+require('view/frontend/homepageView.php');
