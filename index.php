@@ -1,5 +1,6 @@
 <?php
 try {
+    require('controller/homepageController.php');
 
 }
 catch(Exception $e) {
