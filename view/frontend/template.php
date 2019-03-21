@@ -18,7 +18,7 @@
                 </nav>
                 <nav class="menu_user">
                     <ul>
-                        <li><a href="">Se connecter / creer mon compte</a></li>
+                        <li><a href="index.php?action=auth_start">Se connecter / creer mon compte</a></li>
                     </ul>
                 </nav>
             </header>
