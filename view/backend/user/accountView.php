@@ -1,4 +1,4 @@
-<?php $title = 'BEEWATCH- Homepage'; ?>
+<?php $title = 'BEEWATCH- Mon compte'; ?>
 
 <?php ob_start(); ?>
 

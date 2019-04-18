@@ -37,6 +37,9 @@ try {
             } else {
                 throw new Exception('E-mail non-rempli');
             }
+        /* ------------- User account ------------ */
+        } elseif ($_GET['action'] == 'auth_Verify_Cleared') {
+            require('controller/account_management/userAccountController.php');
         }
     } else {
         require('controller/homepageController.php');

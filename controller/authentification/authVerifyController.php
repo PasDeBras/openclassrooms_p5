@@ -13,5 +13,14 @@ function verifyCredentials($enteredEmail, $enteredPassword) {
         echo 'mauvais mot de passe';
     } else {
         echo 'loggé';
+        session_start();
+        $_SESSION['id'] = $retrievedAccount['id'];
+        $_SESSION['user_username'] = $retrievedAccount['username'];
+        $_SESSION['user_email'] = $retrievedAccount['email'];
+        $_SESSION['user_password'] = $retrievedAccount['password'];
+        $_SESSION['user_surname'] = $retrievedAccount['surname'];
+        $_SESSION['user_firstname'] = $retrievedAccount['firstname'];
+
+        header('Location: index.php?action=auth_Verify_Cleared');
     };
 }

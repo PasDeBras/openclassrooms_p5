@@ -12,13 +12,13 @@
                 <div id="logo"><img src="" alt="Logo"></div>
                 <nav class="menu_gobal">
                     <ul>
-                        <li><a href="">accueil</a></li>
+                        <li><a href="index.php">accueil</a></li>
                         <li><a href="">Mission</a></li>
                     </ul>
                 </nav>
                 <nav class="menu_user">
                     <ul>
-                        <li><a href="">Gerer mon compte</a></li>
+                        <li><a href="">Gerer mon compte : </a></li>
                     </ul>
                 </nav>
             </header>
