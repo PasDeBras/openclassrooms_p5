@@ -25,6 +25,18 @@ try {
                     }
                 }
             }
+        /* ------------------ Account login ----------------- */
+        } elseif ($_GET['action'] == 'auth_Verify_Login') {
+            require('controller/authentification/authVerifyController.php');
+            if (isset($_POST['email'])) {
+                if (isset($_POST['password'])) {
+                    verifyCredentials($_POST['email'], $_POST['password']);
+                } else {
+                    throw new Exception('Mot de passe non rempli');
+                }
+            } else {
+                throw new Exception('E-mail non-rempli');
+            }
         }
     } else {
         require('controller/homepageController.php');
