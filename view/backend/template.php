@@ -13,12 +13,13 @@
                 <nav class="menu_gobal">
                     <ul>
                         <li><a href="index.php">accueil</a></li>
-                        <li><a href="">Mission</a></li>
+                        <li><a href="index.php?action=auth_Verify_Disconnect">Mission</a></li>
                     </ul>
                 </nav>
                 <nav class="menu_user">
                     <ul>
                         <li><a href="">Gerer mon compte : <?= $_SESSION['user_username']?></a></li>
+                        <li><a href="">Déconnexion : <?= $_SESSION['user_username']?></a></li>
                     </ul>
                 </nav>
             </header>

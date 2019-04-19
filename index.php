@@ -38,6 +38,9 @@ try {
             } else {
                 throw new Exception('E-mail non-rempli');
             }
+        } elseif ($_GET['action'] == 'auth_Verify_Disconnect'){
+            require('controller/authentification/authVerifyController.php');
+            disconnectUser();
         /* ------------- User account ------------ */
         } elseif ($_GET['action'] == 'auth_Verify_Cleared') {
             require('controller/account_management/userAccountController.php');

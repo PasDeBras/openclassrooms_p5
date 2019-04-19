@@ -24,3 +24,8 @@ function verifyCredentials($enteredEmail, $enteredPassword) {
         header('Location: index.php?action=auth_Verify_Cleared');
     };
 }
+
+function disconnectUser() {
+    session_destroy();
+    header('index.php');
+}

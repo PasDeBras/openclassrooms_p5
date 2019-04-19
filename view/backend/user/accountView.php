@@ -1,5 +1,4 @@
 <?php 
-session_start();
 $title = 'BEEWATCH- Mon compte'; ?>
 
 <?php ob_start(); ?>
