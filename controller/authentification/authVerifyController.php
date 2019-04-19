@@ -1,6 +1,9 @@
 <?php
-require('view/frontend/authentification/authVerifyView.php');
+
 require_once('model/AccountManager.php');
+function login() {
+    require('view/frontend/authentification/authVerifyView.php');
+}
 
 function verifyCredentials($enteredEmail, $enteredPassword) {
     $accountManager = new OpenClassrooms\P5\Model\AccountManager();
@@ -37,9 +40,11 @@ function verifyStoredCredentials() {
                 throw new Exception('Erreur lors de la connexion : veuillez vous reconnecter.');
             } else {}
         } else {
+            session_destroy();
             throw new Exception('Mot de passe du compte non-renseigné');
         }
     } else {
+        session_destroy();
         throw new Exception('ID du compte non-renseigné');
     }
     

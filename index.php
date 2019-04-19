@@ -10,6 +10,7 @@ try {
             require('controller/authentification/authNewController.php');
         } elseif ($_GET['action'] == 'auth_Verify') { /* Access account login page */
             require('controller/authentification/authVerifyController.php');
+            login();
         /* ---------------- Account creation ---------------- */
         } elseif ($_GET['action'] == 'auth_New_Create') {
             require('controller/authentification/authNewController.php');
@@ -44,6 +45,15 @@ try {
         /* ------------- User account ------------ */
         } elseif ($_GET['action'] == 'auth_Verify_Cleared') {
             require('controller/account_management/userAccountController.php');
+        } elseif ($_GET['action'] == 'user_Account_Manage') {
+            /*require('controller/authentification/authVerifyController.php');
+            verifyStoredCredentials();*/
+            require('controller/account_management/userAccountController.php');
+        } elseif ($_GET['action'] == 'user_Account_Change_Password') {
+            require('controller/account_management/userAccountPasswordChangeController.php');
+        } elseif ($_GET['action'] == 'Change_Password') {
+            require('controller/account_management/userAccountPasswordChangeController.php');
+            changeAccount_password($_SESSION['id'], $_POST['password']);
         }
     } else {
         require('controller/homepageController.php');

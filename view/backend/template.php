@@ -18,7 +18,7 @@
                 </nav>
                 <nav class="menu_user">
                     <ul>
-                        <li><a href="">Gerer mon compte : <?= $_SESSION['user_username']?></a></li>
+                        <li><a href="index.php?action=user_Account_Manage">Gerer mon compte : <?= $_SESSION['user_username']?></a></li>
                         <li><a href="">Déconnexion : <?= $_SESSION['user_username']?></a></li>
                     </ul>
                 </nav>

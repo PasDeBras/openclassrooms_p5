@@ -29,4 +29,16 @@ class AccountManager extends Manager
         return $accountPassword;
     }
 
+    public function changeAccountPassword($id, $newPassword)
+    {
+        $db = $this->dbConnect();
+        $changePassword = $db->prepare('UPDATE accounts SET password = :newpassword WHERE id = :id');
+        $changePassword->execute(array(
+            'newpassword' => $newPassword,
+            'id' => $id
+        ));
+
+        return $changePassword;
+    }
+
 }
