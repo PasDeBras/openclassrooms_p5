@@ -27,9 +27,18 @@ function verifyCredentials($enteredEmail, $enteredPassword) {
 
 function verifyStoredCredentials() {
     if ($_SESSION['id']) {
-        $accountManager = new OpenClassrooms\P5\Model\AccountManager();
-        $retrieveAccountPassword = $accountManager->retrieveAccountPassword($_SESSION['id']);
-        $retrievedAccountPassword = $retrieveAccountPassword->fetch();
+        if ($_SESSION['user_password']) {
+            $accountManager = new OpenClassrooms\P5\Model\AccountManager();
+            $retrieveAccountPassword = $accountManager->retrieveAccountPassword($_SESSION['id']);
+            $retrievedAccountPassword = $retrieveAccountPassword->fetch();
+
+            if ($retrievedAccountPassword['password'] != $_SESSION['user_password']) {
+                session_destroy();
+                throw new Exception('Erreur lors de la connexion : veuillez vous reconnecter.');
+            } else {}
+        } else {
+            throw new Exception('Mot de passe du compte non-renseigné');
+        }
     } else {
         throw new Exception('ID du compte non-renseigné');
     }
