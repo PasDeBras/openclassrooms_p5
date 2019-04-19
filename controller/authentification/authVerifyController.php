@@ -25,6 +25,17 @@ function verifyCredentials($enteredEmail, $enteredPassword) {
     };
 }
 
+function verifyStoredCredentials() {
+    if ($_SESSION['id']) {
+        $accountManager = new OpenClassrooms\P5\Model\AccountManager();
+        $retrieveAccountPassword = $accountManager->retrieveAccountPassword($_SESSION['id']);
+        $retrievedAccountPassword = $retrieveAccountPassword->fetch();
+    } else {
+        throw new Exception('ID du compte non-renseigné');
+    }
+    
+}
+
 function disconnectUser() {
     session_destroy();
     header('index.php');

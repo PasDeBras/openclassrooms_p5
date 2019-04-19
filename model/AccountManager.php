@@ -21,4 +21,12 @@ class AccountManager extends Manager
         return $account;
     }
 
+    public function retrieveAccountPassword($id)
+    {
+        $db = $this->dbConnect();
+        $accountPassword = $db->prepare('SELECT password FROM accounts WHERE id = ?');
+        $accountPassword->execute(array($id));
+        return $accountPassword;
+    }
+
 }
