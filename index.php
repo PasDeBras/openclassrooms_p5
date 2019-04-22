@@ -14,19 +14,6 @@ try {
         /* ---------------- Account creation ---------------- */
         } elseif ($_GET['action'] == 'auth_New_Create') {
             require('controller/authentification/authNewController.php');
-            if (isset($_POST['username'])) {
-                if (isset($_POST['password'])) {
-                    if (isset($_POST['email'])) {
-                        if (isset($_POST['firstname'])) {
-                            if (isset($_POST['firstname'])) {
-                                if (isset($_POST['lastname'])) {
-                                    createNewAccount($_POST['username'], $_POST['password'], $_POST['email'], $_POST['firstname'], $_POST['lastname']);
-                                } 
-                            }
-                        }   
-                    }
-                }
-            }
         /* ------------------ Account login ----------------- */
         } elseif ($_GET['action'] == 'auth_Verify_Login') {
             require('controller/authentification/authVerifyController.php');
