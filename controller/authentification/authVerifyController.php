@@ -15,8 +15,6 @@ function verifyCredentials($enteredEmail, $enteredPassword) {
     } elseif ($retrievedAccount['password'] != $enteredPassword) {
         echo 'mauvais mot de passe';
     } else {
-        echo 'loggé';
-        /* session_start(); */
         $_SESSION['id'] = $retrievedAccount['id'];
         $_SESSION['user_username'] = $retrievedAccount['username'];
         $_SESSION['user_email'] = $retrievedAccount['email'];
