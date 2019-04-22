@@ -41,4 +41,12 @@ class AccountManager extends Manager
         return $changePassword;
     }
 
+    public function deleteAccount($id) {
+        $db = $this->dbConnect();
+        $deleteAccount = $db->prepare('DELETE FROM accounts WHERE id = ?');
+        $deleteAccount->execute(array($id));
+
+        return $deleteAccount;
+    }
+
 }

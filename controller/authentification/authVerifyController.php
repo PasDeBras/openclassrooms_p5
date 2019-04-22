@@ -16,7 +16,7 @@ function verifyCredentials($enteredEmail, $enteredPassword) {
         echo 'mauvais mot de passe';
     } else {
         echo 'loggé';
-        session_start();
+        /* session_start(); */
         $_SESSION['id'] = $retrievedAccount['id'];
         $_SESSION['user_username'] = $retrievedAccount['username'];
         $_SESSION['user_email'] = $retrievedAccount['email'];
@@ -51,6 +51,7 @@ function verifyStoredCredentials() {
 }
 
 function disconnectUser() {
+    $_SESSION = array();
     session_destroy();
-    header('index.php');
+    header('Location: index.php');
 }

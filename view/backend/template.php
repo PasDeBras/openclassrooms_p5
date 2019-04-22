@@ -13,15 +13,21 @@
                 <nav class="menu_gobal">
                     <ul>
                         <li><a href="index.php">accueil</a></li>
-                        <li><a href="index.php?action=auth_Verify_Disconnect">Mission</a></li>
+                        <li><a href="">Mission</a></li>
                     </ul>
                 </nav>
+                <?php
+                if (!empty($_SESSION['user_username'])) {
+                    ?>
                 <nav class="menu_user">
                     <ul>
-                        <li><a href="index.php?action=user_Account_Manage">Gerer mon compte : <?= $_SESSION['user_username']?></a></li>
-                        <li><a href="">Déconnexion : <?= $_SESSION['user_username']?></a></li>
+                        <li><a href="index.php?action=user_Account_Manage">Gerer mon compte : <?= ($_SESSION['user_username'])?></a></li>
+                        <li><a href="index.php?action=auth_Verify_Disconnect">Déconnexion : <?= $_SESSION['user_username']?></a></li>
                     </ul>
                 </nav>
+                <?php
+                }
+                ?>
             </header>
 
             <div id="content">

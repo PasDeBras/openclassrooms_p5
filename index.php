@@ -54,7 +54,16 @@ try {
         } elseif ($_GET['action'] == 'Change_Password') {
             require('controller/account_management/userAccountPasswordChangeController.php');
             changeAccount_password($_SESSION['id'], $_POST['password']);
+        } elseif ($_GET['action'] == 'user_Account_Deletion') {
+            require('controller/account_management/userAccountDeletionController.php');
+        } elseif ($_GET['action'] == 'Delete_Account') {
+            if ($_POST['delete'] = true) {
+                require('controller/account_management/userAccountDeletionController.php');
+                deleteAccount($_SESSION['id']);
+            } else {}
         }
+    } elseif (!empty($_SESSION['user_username'])) {
+        require('controller/account_management/userAccountController.php');
     } else {
         require('controller/homepageController.php');
     }
