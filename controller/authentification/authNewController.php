@@ -11,11 +11,13 @@ if (!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['e
             $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $accountManager->insertAccount($_POST['username'], $hashedPassword, $_POST['email'], $_POST['firstname'], $_POST['lastname']);
             $context = 'accountCreated';
+            header('Location: index.php?action=auth_Verify');
+            
         } else {
-            $context = 'existingEmail';
+            $context = 'existingUser';
         }
     } else {
-        $context = 'existingUser';
+        $context = 'existingEmail';
     }
     
 } else {

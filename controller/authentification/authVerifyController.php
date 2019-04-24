@@ -30,6 +30,5 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
     } else {}
 } else {
     $context = NULL;
-    
 }
 require('view/frontend/authentification/authVerifyView.php');
