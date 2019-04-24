@@ -1,21 +1,23 @@
 <?php
 
-require_once('model/AccountManager.php');
-function login() {
-    require('view/frontend/authentification/authVerifyView.php');
+function disconnectUser() {
+    $_SESSION = array();
+    session_destroy();
+    header('Location: index.php');
 }
 
-function verifyCredentials($enteredEmail, $enteredPassword) {
+if (!empty($_POST['email']) && !empty($_POST['password'])) {
+    require_once('model/AccountManager.php');
     $accountManager = new OpenClassrooms\P5\Model\AccountManager();
-    $retrieveAccount = $accountManager->retrieveAccount($enteredEmail);
+    $retrieveAccount = $accountManager->retrieveAccount($_POST['email']);
     $retrievedAccount = $retrieveAccount->fetch();
 
-    $passwordCheck = password_verify($enteredPassword, $retrievedAccount['password']);
+    $passwordCheck = password_verify($_POST['password'], $retrievedAccount['password']);
     
     if (!$retrievedAccount['email']) {
-        echo 'email non reconnu';
+        $context = 'errorMail';
     } elseif (!$passwordCheck) {
-        echo 'mauvais mot de passe';
+        $context = 'errorPassword';
     } elseif ($passwordCheck) {
         $_SESSION['id'] = $retrievedAccount['id'];
         $_SESSION['user_username'] = $retrievedAccount['username'];
@@ -25,13 +27,9 @@ function verifyCredentials($enteredEmail, $enteredPassword) {
         $_SESSION['user_firstname'] = $retrievedAccount['firstname'];
 
         header('Location: index.php?action=auth_Verify_Cleared');
-    } else {
-        echo 'Erreur';
-    };
+    } else {}
+} else {
+    $context = NULL;
+    
 }
-
-function disconnectUser() {
-    $_SESSION = array();
-    session_destroy();
-    header('Location: index.php');
-}
+require('view/frontend/authentification/authVerifyView.php');

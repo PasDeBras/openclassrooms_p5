@@ -10,16 +10,16 @@ try {
             require('controller/authentification/authNewController.php');
         } elseif ($_GET['action'] == 'auth_Verify') { /* Access account login page */
             require('controller/authentification/authVerifyController.php');
-            login();
+            
         /* ---------------- Account creation ---------------- */
         } elseif ($_GET['action'] == 'auth_New_Create') {
             require('controller/authentification/authNewController.php');
         /* ------------------ Account login ----------------- */
         } elseif ($_GET['action'] == 'auth_Verify_Login') {
-            require('controller/authentification/authVerifyController.php');
+            
             if (isset($_POST['email'])) {
                 if (isset($_POST['password'])) {
-                    verifyCredentials($_POST['email'], $_POST['password']);
+                    require('controller/authentification/authVerifyController.php');
                 } else {
                     throw new Exception('Mot de passe non rempli');
                 }
@@ -33,8 +33,6 @@ try {
         } elseif ($_GET['action'] == 'auth_Verify_Cleared') {
             require('controller/account_management/userAccountController.php');
         } elseif ($_GET['action'] == 'user_Account_Manage') {
-            /*require('controller/authentification/authVerifyController.php');
-            verifyStoredCredentials();*/
             require('controller/account_management/userAccountController.php');
         } elseif ($_GET['action'] == 'user_Account_Change_Password') {
             require('controller/account_management/userAccountPasswordChangeController.php');
