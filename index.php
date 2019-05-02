@@ -46,6 +46,8 @@ try {
                 require('controller/account_management/userAccountDeletionController.php');
                 deleteAccount($_SESSION['id']);
             } else {}
+        }elseif ($_GET['action'] == 'displayHives') {
+            require('controller/hive_management/hiveDisplayController.php');
         }
     } elseif (!empty($_SESSION['user_username'])) {
         require('controller/account_management/userAccountController.php');

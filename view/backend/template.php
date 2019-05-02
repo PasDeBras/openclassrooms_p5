@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <title><?= $title ?></title>
-        <link href="public/css/style.css" rel="stylesheet" /> 
+        <link href="css/style.css" rel="stylesheet" /> 
     </head>
         
     <body>
@@ -13,6 +13,8 @@
                 <nav class="menu_gobal">
                     <ul>
                         <li><a href="index.php">accueil</a></li>
+                        <li><a href="index.php?action=displayHives">Carte</a></li>
+                        <li><a href="index.php">Mes ruches</a></li>
                         <li><a href="">Mission</a></li>
                     </ul>
                 </nav>
@@ -42,5 +44,8 @@
                 <p>Créé par Paul Ponnau pour OpenClassrooms dans le cadre du parcours Web Dev<br>Contact & Information: contact@paulponnau.fr.</p>
             </div>
         </footer>
+
+        <script src="js/map.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCL7fnU1p4GrjlTjnu5iT36H4rbBZuWyqs&callback=initMap" async defer></script>
     </body>
 </html>
