@@ -8,8 +8,16 @@ class HiveManager extends Manager
     public function retrieveHiveMarkers()
     {
         $db = $this->dbConnect();
-        $hiveMarkers = $db->query('SELECT * FROM hive_markers WHERE 1'); // -where
+        $hiveMarkers = $db->query('SELECT * FROM hive_markers');
         return $hiveMarkers;
+    }
+
+    public function retrieveAccountHiveMarkers($account_Id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT * FROM hive_markers WHERE account_id = ?');
+        $req->execute(array($account_Id));
+        return $req;
     }
 
     public function retrieveHiveMarker($id)

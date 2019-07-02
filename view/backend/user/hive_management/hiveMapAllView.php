@@ -1,5 +1,5 @@
 <?php 
-$title = 'BEEWATCH- hivedisplay'; ?>
+$title = 'BEEWATCH- HiveMap All'; ?>
 
 <?php ob_start(); ?>
 <p>map</p>

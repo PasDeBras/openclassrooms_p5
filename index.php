@@ -46,8 +46,15 @@ try {
                 require('controller/account_management/userAccountDeletionController.php');
                 deleteAccount($_SESSION['id']);
             } else {}
-        }elseif ($_GET['action'] == 'displayHives') {
-            require('controller/hive_management/hiveDisplayController.php');
+        /* ----------- Hive management ---------- */
+        } elseif ($_GET['action'] == 'hiveMap_All') {
+            require('controller/hive_management/hiveMapAllController.php');
+        } elseif ($_GET['action'] == 'hiveMap_Account') {
+            require('controller/hive_management/hiveMapAccountController.php');
+        } elseif ($_GET['action'] == 'hiveMap_Account_HiveCreator') {
+            require('controller/hive_management/hiveCreatorController.php');
+        }elseif ($_GET['action'] == 'hiveMap_Account_HiveEditor') {
+            require('controller/hive_management/hiveEditorController.php');
         }
     } elseif (!empty($_SESSION['user_username'])) {
         require('controller/account_management/userAccountController.php');

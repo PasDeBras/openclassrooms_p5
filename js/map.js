@@ -1,70 +1,56 @@
-var customLabel = {
-    restaurant: {
-        label: 'R'
-    },
-    bar: {
-        label: 'B'
-    }
-};
-
 function initMap() {
-    var map = new google.maps.Map(document.getElementById('map'), {
-        center: new google.maps.LatLng(-33.863276, 151.207977),
-        zoom: 12
-    });
-    var infoWindow = new google.maps.InfoWindow;
+    
+    var account_map = document.getElementById('account_map');
+    var complete_map = document.getElementById('map');
+    var userid = document.getElementsByTagName('userid')[0].innerHTML;
 
-    downloadUrl('https://storage.googleapis.com/mapsdevsite/json/mapmarkers2.xml', function(data) {
-        var xml = data.responseXML;
-        var markers = xml.documentElement.getElementsByTagName('marker');
-        Array.prototype.forEach.call(markers, function(markerElem) {
-            var id = markerElem.getAttribute('id');
-            var name = markerElem.getAttribute('name');
-            var address = markerElem.getAttribute('address');
-            var type = markerElem.getAttribute('type');
-            var point = new google.maps.LatLng(
-                parseFloat(markerElem.getAttribute('lat')),
-                parseFloat(markerElem.getAttribute('lng')));
-
-            var infowincontent = document.createElement('div');
-            var strong = document.createElement('strong');
-            strong.textContent = name
-            infowincontent.appendChild(strong);
-            infowincontent.appendChild(document.createElement('br'));
-
-            var text = document.createElement('text');
-            text.textContent = address
-            infowincontent.appendChild(text);
-            var icon = customLabel[type] || {};
-            var marker = new google.maps.Marker({
-                map: map,
-                position: point,
-                label: icon.label
-            });
-            marker.addListener('click', function() {
-                infoWindow.setContent(infowincontent);
-                infoWindow.open(map, marker);
-            });
-        });
-    });
-}
-
-
-
-function downloadUrl(url, callback) {
-    var request = window.ActiveXObject ?
-        new ActiveXObject('Microsoft.XMLHTTP') :
-        new XMLHttpRequest;
-
-    request.onreadystatechange = function() {
-        if (request.readyState == 4) {
-            request.onreadystatechange = doNothing;
-            callback(request, request.status);
-        }
+    if (complete_map) {
+        var map = new google.maps.Map(complete_map, {
+            center: new google.maps.LatLng(-33.863276, 151.207977),
+            zoom: 12
+        })
+    } else if (account_map) {
+        var map = new google.maps.Map(account_map, {
+            center: new google.maps.LatLng(-33.863276, 151.207977),
+            zoom: 12
+        })
     };
 
-    request.open('GET', url, true);
-    request.send(null);
-}
+    var infoWindow = new google.maps.InfoWindow;
 
-function doNothing() {}
+    // Hives request
+    let hives;
+    let req = new XMLHttpRequest();
+    
+    if (complete_map) {
+        req.open("GET", "api/hivesGET.php", true);
+    } else if (account_map) {
+        req.open("GET", "api/hivesGET_Account.php?userid=" + userid, true);
+    };
+    
+    req.addEventListener("readystatechange", function() {
+        if (this.status === 200 && this.readyState == 4) {
+            
+            hives = JSON.parse(req.responseText); 
+            hiveMaker(hives);
+        } else {
+            console.log(this.status, this.readyState); 
+        }
+    })
+    req.send(null);
+
+    // Marker creation from req
+    function hiveMaker(hives) {
+        hives.forEach(function(hive) {
+            console.log(hive)
+            let marker = new google.maps.Marker({
+                position : {lat: Number(hive.lat), lng: Number(hive.lng)},
+                map : map,
+                title : hive.name,
+                address : hive.address,
+            });
+        });
+    };
+    
+
+};

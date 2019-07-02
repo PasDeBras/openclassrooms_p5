@@ -2,3 +2,12 @@
     height: 500px;
     width: 500px;
 }
+
+#account_map {
+    height: 500px;
+    width: 500px;
+}
+
+userid {
+    visibility: hidden;
+}

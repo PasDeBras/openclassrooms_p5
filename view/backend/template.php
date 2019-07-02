@@ -13,8 +13,8 @@
                 <nav class="menu_gobal">
                     <ul>
                         <li><a href="index.php">accueil</a></li>
-                        <li><a href="index.php?action=displayHives">Carte</a></li>
-                        <li><a href="index.php">Mes ruches</a></li>
+                        <li><a href="index.php?action=hiveMap_All">Carte</a></li>
+                        <li><a href="index.php?action=hiveMap_Account">Mes ruches</a></li>
                         <li><a href="">Mission</a></li>
                     </ul>
                 </nav>
@@ -44,6 +44,7 @@
                 <p>Créé par Paul Ponnau pour OpenClassrooms dans le cadre du parcours Web Dev<br>Contact & Information: contact@paulponnau.fr.</p>
             </div>
         </footer>
+        <userid><?= $_SESSION['id'] ?></userid>
 
         <script src="js/map.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCL7fnU1p4GrjlTjnu5iT36H4rbBZuWyqs&callback=initMap" async defer></script>
