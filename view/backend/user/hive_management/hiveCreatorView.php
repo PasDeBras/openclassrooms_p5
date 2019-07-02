@@ -5,7 +5,13 @@ $title = 'BEEWATCH- HiveMap All'; ?>
 <a href="index.php?action=hiveMap_Account_HiveCreator">Creer une ruche</a>
 <a href="index.php?action=hiveMap_Account_HiveEditor">Editer une ruche</a>
 <p>map</p>
-<div id="map"></div>
+<div id="account_map"></div>
+
+<div id="latclicked"></div>
+<div id="longclicked"></div>
+
+<div id="latmoved"></div>
+<div id="longmoved"></div>
 <?php
 if ($context == NULL) {?>
     <form action="index.php?action=hiveMap_Account_HiveCreator" method="post">

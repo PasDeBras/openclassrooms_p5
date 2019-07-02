@@ -7,12 +7,14 @@ function initMap() {
     if (complete_map) {
         var map = new google.maps.Map(complete_map, {
             center: new google.maps.LatLng(-33.863276, 151.207977),
-            zoom: 12
+            zoom: 12,
+            disableDoubleClickZoom: true
         })
     } else if (account_map) {
         var map = new google.maps.Map(account_map, {
             center: new google.maps.LatLng(-33.863276, 151.207977),
-            zoom: 12
+            zoom: 12,
+            disableDoubleClickZoom: true
         })
     };
 
@@ -38,6 +40,24 @@ function initMap() {
         }
     })
     req.send(null);
+    // Update lat/long value of div when anywhere in the map is clicked    
+    google.maps.event.addListener(map,'click',function(event) {
+        document.getElementById('hivelat').value = event.latLng.lat();
+        document.getElementById('hivelng').value =  event.latLng.lng();
+        
+        if (markerTemp) {
+            markerTemp.setPosition(event.latLng);
+        } else {
+            var markerTemp = new google.maps.Marker({
+                position: event.latLng, 
+                map: map, 
+                title: event.latLng.lat()+', '+event.latLng.lng()
+            });
+        }
+        
+    });
+    
+                
 
     // Marker creation from req
     function hiveMaker(hives) {
