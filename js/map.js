@@ -45,15 +45,12 @@ function initMap() {
         document.getElementById('hivelat').value = event.latLng.lat();
         document.getElementById('hivelng').value =  event.latLng.lng();
         
-        if (markerTemp) {
-            markerTemp.setPosition(event.latLng);
-        } else {
-            var markerTemp = new google.maps.Marker({
-                position: event.latLng, 
-                map: map, 
-                title: event.latLng.lat()+', '+event.latLng.lng()
-            });
-        }
+        var markerTemp = new google.maps.Marker({
+            position: event.latLng, 
+            map: map, 
+            title: event.latLng.lat()+', '+event.latLng.lng()
+        });
+        
         
     });
     

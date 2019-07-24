@@ -20,11 +20,11 @@ class HiveManager extends Manager
         return $req;
     }
 
-    public function addHiveMarker($account_id, $name, $address, $lat, $lng)
+    public function addHiveMarker($account_id, $name, $address, $lat, $lng, $private)
     {
         $db = $this->dbConnect();
-        $markers = $db->prepare('INSERT INTO hive_markers(account_id, name, address, lat, lng) VALUES(?, ?, ?, ?, ?)');
-        $executeRequest = $markers->execute(array($account_id, $name, $address, $lat, $lng));
+        $markers = $db->prepare('INSERT INTO hive_markers(account_id, name, address, lat, lng) VALUES(?, ?, ?, ?, ?, ?)');
+        $executeRequest = $markers->execute(array($account_id, $name, $address, $lat, $lng, $private));
 
         return $executeRequest;
     }

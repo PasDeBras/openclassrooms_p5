@@ -7,11 +7,6 @@ $title = 'BEEWATCH- HiveMap All'; ?>
 <p>map</p>
 <div id="account_map"></div>
 
-<div id="latclicked"></div>
-<div id="longclicked"></div>
-
-<div id="latmoved"></div>
-<div id="longmoved"></div>
 <?php
 if ($context == NULL) {?>
     <form action="index.php?action=hiveMap_Account_HiveCreator" method="post">
@@ -23,6 +18,8 @@ if ($context == NULL) {?>
         <input type="text" name="hivelat" id="hivelat" required><br>
         longitude:<br>
         <input type="text" name="hivelng" id="hivelng" required><br>
+        Visible pour tous:<br>
+        <input type="checkbox" name="private" id="private"><br>
         <input type="submit" value="Submit">
     </form>
 <?php

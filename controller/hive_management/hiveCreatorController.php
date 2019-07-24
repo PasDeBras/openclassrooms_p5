@@ -1,8 +1,8 @@
 <?php
-if (!empty($_POST['hivename']) && !empty($_POST['hiveadress']) && !empty($_POST['hivelat']) && !empty($_POST['hivelng'])) {
+if (!empty($_POST['hivename']) && !empty($_POST['hiveadress']) && !empty($_POST['hivelat']) && !empty($_POST['hivelng']) && !empty($_POST['private'])) {
     require_once('model/HiveManager.php');
     $hiveManager = new OpenClassrooms\P5\Model\HiveManager();
-    $hiveManager->addHiveMarker($_SESSION['id'], $_POST['hivename'], $_POST['hiveadress'], $_POST['hivelat'], $_POST['hivelng']);
+    $hiveManager->addHiveMarker($_SESSION['id'], $_POST['hivename'], $_POST['hiveadress'], $_POST['hivelat'], $_POST['hivelng'], $_POST['private']);
     
     $context = 'hiveCreated';
 

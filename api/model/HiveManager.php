@@ -8,7 +8,7 @@ class HiveManager extends Manager
     public function retrieveHiveMarkers()
     {
         $db = $this->dbConnect();
-        $hiveMarkers = $db->query('SELECT * FROM hive_markers');
+        $hiveMarkers = $db->query('SELECT * FROM hive_markers WHERE private = 0');
         return $hiveMarkers;
     }
 
