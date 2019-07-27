@@ -1,5 +1,6 @@
 <?php 
-$title = 'BEEWATCH- HiveMap All'; ?>
+$title = 'BEEWATCH- HiveMap All';
+$loadMap=TRUE; ?>
 
 <?php ob_start(); ?>
 <a href="index.php?action=hiveMap_Account_HiveCreator">Creer une ruche</a>
@@ -18,8 +19,6 @@ if ($context == NULL) {?>
         <input type="text" name="hivelat" id="hivelat" required><br>
         longitude:<br>
         <input type="text" name="hivelng" id="hivelng" required><br>
-        Visible pour tous:<br>
-        <input type="checkbox" name="private" id="private"><br>
         <input type="submit" value="Submit">
     </form>
 <?php

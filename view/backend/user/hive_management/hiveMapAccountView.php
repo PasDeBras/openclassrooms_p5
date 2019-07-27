@@ -1,5 +1,6 @@
 <?php 
-$title = 'BEEWATCH- HiveMap account'; ?>
+$title = 'BEEWATCH- HiveMap account';
+$loadMap=TRUE; ?>
 
 <?php ob_start(); ?>
 <a href="index.php?action=hiveMap_Account_HiveCreator">Creer une ruche</a>

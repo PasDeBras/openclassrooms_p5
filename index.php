@@ -46,6 +46,10 @@ try {
                 require('controller/account_management/userAccountDeletionController.php');
                 deleteAccount($_SESSION['id']);
             } else {}
+        } elseif ($_GET['action'] == 'user_Account_Inbox') {
+            require('controller/account_management/userAccountInboxController.php');
+        } elseif ($_GET['action'] == 'Members') {
+            require('controller/account_management/memberListController.php');
         /* ----------- Hive management ---------- */
         } elseif ($_GET['action'] == 'hiveMap_All') {
             require('controller/hive_management/hiveMapAllController.php');

@@ -1,6 +1,5 @@
 <?php
 
-namespace OpenClassrooms\P5\Model;
 
 require_once('model/Manager.php');
 class AccountManager extends Manager
@@ -47,6 +46,13 @@ class AccountManager extends Manager
         $deleteAccount->execute(array($id));
 
         return $deleteAccount;
+    }
+
+    public function listAllAccounts() 
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT id, username FROM accounts');
+        return $req;
     }
 
 }

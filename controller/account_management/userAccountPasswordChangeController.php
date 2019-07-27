@@ -1,9 +1,14 @@
 <?php
-require_once('model/AccountManager.php');
+function classLoader($class)
+{
+  require 'model/' . $class . '.php';
+}
+spl_autoload_register('classLoader');
+
 require('view/backend/user/account_management/passwordChangeView.php');
 
 function changeAccount_password($id, $newPassword) {
-    $accountManager = new OpenClassrooms\P5\Model\AccountManager();
+    $accountManager = new AccountManager();
     $changePassword = $accountManager->changeAccountPassword($id, $newPassword);
     echo 'done';
 }

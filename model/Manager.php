@@ -1,7 +1,5 @@
 <?php
 
-namespace OpenClassrooms\P5\Model;
-
 class Manager
 {
     protected function dbConnect()

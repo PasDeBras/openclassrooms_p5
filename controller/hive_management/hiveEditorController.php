@@ -1,6 +1,11 @@
 <?php
-require_once('model/HiveManager.php');
-$hiveManager = new OpenClassrooms\P5\Model\HiveManager();
+function classLoader($class)
+{
+  require 'model/' . $class . '.php';
+}
+spl_autoload_register('classLoader');
+
+$hiveManager = new HiveManager();
 
 if (!empty($_GET['editHive'])) {
     if ((!empty($_GET['editHive'])) && (!empty($_POST['hivename'])) && (!empty($_POST['hiveaddress'])) && (!empty($_POST['hivelat'])) && (!empty($_POST['hivelng']))) {
@@ -16,7 +21,7 @@ if (!empty($_GET['editHive'])) {
     $context = 'hiveDeleted';
 } else {
     $context = NULL;
-    $hives = $hiveManager->retrieveHiveMarkers();
+    $hives = $hiveManager->retrieveAccountHiveMarkers($_SESSION['id']);
 }
 
 require('view/backend/user/hive_management/hiveEditorView.php');

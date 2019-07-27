@@ -1,8 +1,13 @@
 <?php
+function classLoader($class)
+{
+    require_once $class . '.php';
+}
+spl_autoload_register('classLoader');
 
 if (!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['email']) && !empty($_POST['firstname']) && !empty($_POST['lastname'])) {
     require_once('model/AccountManager.php');
-    $accountManager = new OpenClassrooms\P5\Model\AccountManager();
+    $accountManager = new AccountManager();
     $isAccountAvailable = $accountManager->retrieveAccount($_POST['email']);
     $accountAvailablility = $isAccountAvailable->fetch();
     

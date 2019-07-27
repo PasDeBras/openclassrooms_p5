@@ -1,11 +1,12 @@
 <?php 
-$title = 'BEEWATCH- HiveMap All'; ?>
+$title = 'BEEWATCH- HiveMap All';
+$loadMap=TRUE; ?>
 
 <?php ob_start(); ?>
 <a href="index.php?action=hiveMap_Account_HiveCreator">Creer une ruche</a>
 <a href="index.php?action=hiveMap_Account_HiveEditor">Editer une ruche</a>
 <p>map</p>
-<div id="map"></div>
+<div id="account_map"></div>
 <?php
 if ($context == NULL){
     while ($data = $hives->fetch()) {?>

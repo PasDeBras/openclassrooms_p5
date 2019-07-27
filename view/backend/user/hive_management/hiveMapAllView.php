@@ -1,5 +1,7 @@
 <?php 
-$title = 'BEEWATCH- HiveMap All'; ?>
+$title = 'BEEWATCH- HiveMap All'; 
+$loadMap=TRUE;
+?>
 
 <?php ob_start(); ?>
 <p>map</p>
