@@ -6,7 +6,7 @@ $title = 'BEEWATCH- List of Members'; ?>
 <!-- <p>Membres :<?= $listOfAccounts->rowCount(); ?></p> -->
 <?php 
 while ($data = $listOfAccounts->fetch()) {?>
-    <p>Utilisateur - <?= $data['username'] ?> <a href="index.php?action=user_Account_Inbox&friendId=<?= $data['id']?>">Envoyer une requete</a></p>
+    <p>Utilisateur - <?= $data['username'] ?> <a href="index.php?action=user_Account_Inbox&send_FriendshipRequest=<?= $data['id']?>">Envoyer une requete</a></p>
 <?php
     }
 ?>

@@ -16,7 +16,7 @@ class FriendshipRequestsManager extends Manager //
     public function readFriendshipRequests($receiverId)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT friendship_requests.id, accounts.username AS sendername 
+        $req = $db->prepare('SELECT friendship_requests.id AS requestid, accounts.username AS sendername, accounts.id AS senderid 
         FROM friendship_requests 
         INNER JOIN accounts 
         ON friendship_requests.receiver_id = ? 
@@ -25,9 +25,11 @@ class FriendshipRequestsManager extends Manager //
         return $req;
     }
 
-    public function deleteFriendshipRequest($id)
+    public function deleteFriendshipRequest($friendShipRequestId)
     {
-
+        $db = $this->dbConnect();
+        $req = $db->prepare('DELETE FROM friendship_requests WHERE id = ?');
+        $req->execute(array($friendShipRequestId));
     }
 
     public function acceptFriendshipRequest($friendShipRequestId, $sender_id, $receiver_id)

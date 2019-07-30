@@ -32,7 +32,7 @@ function initMap() {
     
     req.addEventListener("readystatechange", function() {
         if (this.status === 200 && this.readyState == 4) {
-            
+            console.log(req.responseText);
             hives = JSON.parse(req.responseText); 
             hiveMaker(hives);
         } else {
