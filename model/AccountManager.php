@@ -48,7 +48,7 @@ class AccountManager extends Manager
         return $deleteAccount;
     }
 
-    public function listAllAccounts() 
+    public function readAllAccounts() 
     {
         $db = $this->dbConnect();
         $req = $db->query('SELECT id, username FROM accounts');
