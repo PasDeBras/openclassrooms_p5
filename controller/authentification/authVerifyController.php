@@ -30,13 +30,14 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
         $_SESSION['user_password'] = $retrievedAccount['password'];
         $_SESSION['user_surname'] = $retrievedAccount['surname'];
         $_SESSION['user_firstname'] = $retrievedAccount['firstname'];
-
+/* 
         $friendshipLinksManager = new FriendshiplinksManager();
-        $readFriendshipLinks = $friendshipLinksManager->readFriendshipLinks($retrievedAccount['id']);
-        $_SESSION['user_friendlist'] = array();
+        $readFriendshipLinks = $friendshipLinksManager->readFriendshipLinks($_SESSION['id']);
+        
         while ($readFriendshipLinks->fetch(PDO::FETCH_ASSOC)) {
-            $_SESSION['user_friendlist'][] = $readFriendshipLinks;
-        } 
+            echo "coco";
+            array_push($_SESSION['user_friendlist'], $readFriendshipLinks);
+        }  */
         
 
         header('Location: index.php?action=auth_Verify_Cleared');
