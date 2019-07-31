@@ -167,17 +167,63 @@ footer{
 #map_overlay {
     position: absolute;
     z-index: 3;
-    width: 50%;
-    height: 80%; 
+    width: auto;
+    height: auto; 
     padding-top: 10px;
     right: 10px;
     bottom: 10px;
-	  background-color: rgb(255, 255, 255);
-    border-radius: 15px;
+	  background: repeating-linear-gradient(
+      135deg,
+    #faa01d,
+    #faa01d 20px,
+    #6a402f 20px,
+    #6a402f 35px
+    );
+    border: 5px solid white;
+    box-shadow: 2px 2px 5px black;
 }
-.marker
+#map_overlay_titleDiv
 {
-  box-shadow: 10px 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  
+}
+#hiveLogo
+{
+  height: 64px;
+  width: 64px;
+  
+}
+#map_overlay_title
+{
+  color: white;
+  text-shadow: 2px 0 0 #6a402f, -2px 0 0 #6a402f, 0 2px 0 #6a402f, 0 -2px 0 #6a402f, 1px 1px #6a402f, -1px -1px 0 #6a402f, 1px -1px 0 #6a402f, -1px 1px 0 #6a402f;
+  font-size: 3em;
+  padding-left: 15px;
+}
+#map_overlay_hiveId
+{
+  color: grey;
+  font-size: 1em;
+}
+#map_overlay_contentDiv
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#map_overlay_address, #map_overlay_owner
+{
+  background-color: white;
+  border: 4px solid white;
+  border-radius: 15px;
+  color: #6a402f;
 }
 
 userid {

@@ -68,6 +68,7 @@ function initMap() {
                 position : {lat: Number(hive.lat), lng: Number(hive.lng)},
                 map : map,
                 title : hive.name,
+                hiveId : hive.id,
                 ownerId : hive.account_id,
                 owner : hive.owner,
                 address : hive.address,
@@ -100,12 +101,19 @@ function initOverlay(hive)
     titleElt.id = "map_overlay_title";
     titleElt.textContent = hive.name;
 
+    let hiveIdElt = document.createElement("h3");
+    hiveIdElt.id = "map_overlay_hiveId";
+    hiveIdElt.textContent = "(hiveID#" + hive.id + ")";
+
+    let contentDivElt = document.createElement("div");
+    contentDivElt.id = "map_overlay_contentDiv";
+
     let addressElt = document.createElement("p");
     addressElt.id = "map_overlay_address";
     addressElt.textContent = "Addresse : " + hive.address;
 
     let ownerElt = document.createElement("p");
-    ownerElt.id = "map_overlay_address";
+    ownerElt.id = "map_overlay_owner";
     ownerElt.textContent = "Propriétaire : " + hive.owner;
 
 /*     let bikesElt = document.createElement("p");
@@ -139,8 +147,10 @@ function initOverlay(hive)
     sectionMapOverlayElt.appendChild(titleDivElt);
     titleDivElt.appendChild(hiveLogoElt); 
     titleDivElt.appendChild(titleElt);
-    sectionMapOverlayElt.appendChild(addressElt);
-    sectionMapOverlayElt.appendChild(ownerElt);
+    titleDivElt.appendChild(hiveIdElt);
+    sectionMapOverlayElt.appendChild(contentDivElt);
+    contentDivElt.appendChild(addressElt);
+    contentDivElt.appendChild(ownerElt);
 /*     sectionMapOverlayElt.appendChild(bikesElt);
     sectionMapOverlayElt.appendChild(buttonElt); */
 };
