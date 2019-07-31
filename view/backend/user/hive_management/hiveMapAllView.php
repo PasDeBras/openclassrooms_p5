@@ -4,7 +4,7 @@ $loadMap=TRUE;
 ?>
 
 <?php ob_start(); ?>
-<p>map</p>
+
 <section id="map_section">
     <div id="map"></div>
     <div id="map_overlay"></div>
