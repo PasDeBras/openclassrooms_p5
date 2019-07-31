@@ -33,6 +33,7 @@
         
         
         <script src="js/menu.js"></script>
+        <script src="js/formValidator.js"></script>
         <footer>
             <div>
                 <p>Créé par Paul Ponnau pour OpenClassrooms dans le cadre du parcours Web Dev<br>Contact & Information: contact@paulponnau.fr.</p>

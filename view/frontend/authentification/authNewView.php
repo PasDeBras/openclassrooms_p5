@@ -11,6 +11,8 @@ if ($context == NULL || $context == 'existingEmail' || $context == 'existingUser
         <input type="text" name="username" id="username" required><?php if ($context == 'existingUser'){?>Nom d'utilisateur déja existant.<?php } ?><br>
         Mot de passe:<br>
         <input type="password" name="password" id="password" required><br>
+        Entrez à nouveau le mot de passe:<br>
+        <input type="password" id="password_confirmation" required><br>
         Adresse e-mail:<br>
         <input type="email" name="email" id="email" required><?php if ($context == 'existingEmail'){?>Email déja existant.<?php } ?><br>
         Prénom:<br>
@@ -18,7 +20,7 @@ if ($context == NULL || $context == 'existingEmail' || $context == 'existingUser
         Nom:<br>
         <input type="text" name="lastname">
         <br>
-        <input id="newAccountView_submitBtn" type="submit" value="Submit">
+        <input id="newAccountView_submitBtn" type="submit" value="Submit" onclick="return passwordValidator()">
     </form>
 </div>
 
