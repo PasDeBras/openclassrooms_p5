@@ -89,14 +89,20 @@ body {
   }
 
 /* navbar */
-#authStartButtonsContainer
+#missionStatement
 {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-
-
+  display: flex;
+  flex-direction: row;
+  background-color: #6a402f;
+  color: #faa01d;
+  width: 60%;
+  margin-top: 5%;
+  margin-left: auto ;
+  margin-right: auto ;
+}
+#missionStatement_text
+{
+  margin-left: 2% ;
 }
 
 footer{
@@ -122,7 +128,7 @@ footer{
     position: relative;
     z-index: 1;
     width: auto;
-	height: 600px;
+	  height: 600px;
     border: 4px solid #5f676e;
 }
 #map, #account_map {
@@ -140,7 +146,7 @@ footer{
     padding-top: 10px;
     right: 10px;
     bottom: 10px;
-	background-color: rgb(255, 255, 255);
+	  background-color: rgb(255, 255, 255);
     border-radius: 15px;
 }
 
