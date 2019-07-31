@@ -89,6 +89,16 @@ body {
   }
 
 /* navbar */
+#authStartButtonsContainer
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+
+}
+
 footer{
     color: #faa01d;
     font-family: "Courier new";

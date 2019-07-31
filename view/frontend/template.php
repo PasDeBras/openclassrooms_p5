@@ -16,7 +16,13 @@
 
                 <nav class="navbar">
                     <a href="index.php">Accueil</a>
-                    <a href="index.php?action=auth_start">Se connecter / creer mon compte</a>
+                    <div class="dropdown">
+                        <button class="dropbtn" onclick="menuToggle()">Se connecter / creer mon compte</button>
+                        <div class="dropdown-content" id="dropDownMenu">
+                            <a href="index.php?action=auth_New">Creer mon compte</a>
+                            <a href="index.php?action=auth_Verify">Je suis déja membre</a>
+                        </div>
+                    </div>
                 </nav>
             </header>
 
@@ -26,7 +32,7 @@
         </div>
         
         
-
+        <script src="js/menu.js"></script>
         <footer>
             <div>
                 <p>Créé par Paul Ponnau pour OpenClassrooms dans le cadre du parcours Web Dev<br>Contact & Information: contact@paulponnau.fr.</p>
