@@ -8,30 +8,29 @@
         
     <body>
         <div id="bloc_page">
-            <header>
-                <div id="logo"><img src="" alt="Logo"></div>
-                <nav class="menu_gobal">
-                    <ul>
-                        <li><a href="index.php">accueil</a></li>
-                        <li><a href="index.php?action=hiveMap_All">Carte</a></li>
-                        <li><a href="index.php?action=Members">Annuaire</a></li>
-                        <li><a href="index.php?action=hiveMap_Account">Mes ruches</a></li>
-                        <li><a href="">Mission</a></li>
-                    </ul>
+            <header id="header">
+            <div id="logo_container">
+                    <div id="logo"><img src="css/media/beewatch_logo_mobile.png" alt="BeeWatch logo"></div>
+                    <div id="logo_fat"><img src="css/media/beewatch_logo.png" alt="BeeWatch logo"></div>
+                </div>
+                <nav class="navbar">
+                    <a href="index.php">Accueil</a>
+                    <a href="index.php?action=hiveMap_All">Carte</a>
+                    <a href="index.php?action=Members">Annuaire</a>
+                    <div class="dropdown">
+                        <button class="dropbtn" onclick="menuToggle()">Mon compte</button>
+                        <div class="dropdown-content" id="dropDownMenu">
+                            <?php
+                            if (!empty($_SESSION['user_username'])) 
+                            {?>
+                                <a href="index.php?action=hiveMap_Account">Mes ruches</a>
+                                <a href="index.php?action=user_Account_Inbox">Inbox</a>
+                                <a href="index.php?action=user_Account_Manage">Gerer mon compte</a>
+                                <a href="index.php?action=auth_Verify_Disconnect">Déconnexion : <?= $_SESSION['user_username']?></a>
+                            <?php }?>
+                        </div>
+                    </div>
                 </nav>
-                <?php
-                if (!empty($_SESSION['user_username'])) {
-                    ?>
-                <nav class="menu_user">
-                    <ul>
-                        <li><a href="index.php?action=user_Account_Inbox">Inbox</a></li>
-                        <li><a href="index.php?action=user_Account_Manage">Gerer mon compte : <?= ($_SESSION['user_username'])?></a></li>
-                        <li><a href="index.php?action=auth_Verify_Disconnect">Déconnexion : <?= $_SESSION['user_username']?></a></li>
-                    </ul>
-                </nav>
-                <?php
-                }
-                ?>
             </header>
 
             <div id="content">
@@ -48,6 +47,7 @@
         </footer>
         <userid><?= $_SESSION['id'] ?></userid> <!-- rplc -->
         
+        <script src="js/menu.js"></script>
         <?php if (!empty($loadMap))
         {
             ?>

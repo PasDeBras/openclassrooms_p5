@@ -1,13 +1,141 @@
-#map {
-    height: 500px;
-    width: 500px;
+#bloc_page {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.display_none {
+    display: none;
 }
 
-#account_map {
-    height: 500px;
-    width: 500px;
+#header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
+/* navbar */
+
+.navbar {
+    overflow: hidden;
+    background-color: #6a402f;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .dropdown {
+    float: left;
+    overflow: hidden;
+  }
+  
+  .dropdown .dropbtn {
+    cursor: pointer;
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+  
+  .navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+    background-color: #faa01d;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 3;
+  }
+  
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  .show {
+    display: block;
+  }
+
+/* navbar */
+
+
+#logo_container 
+{
+    
+}
+
+#map_section {
+    position: relative;
+    z-index: 1;
+    width: auto;
+	height: 600px;
+    border: 4px solid #5f676e;
+}
+#map, #account_map {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+#map_overlay {
+    position: absolute;
+    z-index: 3;
+    width: 50%;
+    height: 80%; 
+    padding-top: 10px;
+    right: 10px;
+    bottom: 10px;
+	background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+}
+
 
 userid {
     visibility: hidden;
+}
+
+/* Media queries */
+@media screen and (max-width: 480px) {
+    #logo_fat
+    {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    #logo_fat
+    {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    #logo
+    {
+        display: none;
+    }
 }

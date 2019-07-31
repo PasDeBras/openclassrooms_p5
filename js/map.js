@@ -68,8 +68,10 @@ function initMap() {
                 position : {lat: Number(hive.lat), lng: Number(hive.lng)},
                 map : map,
                 title : hive.name,
+                ownerId : hive.account_id,
                 owner : hive.owner,
                 address : hive.address,
+                icon: markerIconSelector(hive.account_id)
             });
             // Click on marker brings overlay
             marker.addListener("click", function(){
@@ -138,6 +140,15 @@ function initOverlay(hive)
 /*     sectionMapOverlayElt.appendChild(bikesElt);
     sectionMapOverlayElt.appendChild(buttonElt); */
 };
+function markerIconSelector(hiveId)
+{
+    if (hiveId == userid) 
+    {
+        return "css/media/hive_marker_own.png";
+    } else {
+        return "css/media/hive_marker.png";
+    }
+}
 
 //overlay toggler
 function overlayToggle()
