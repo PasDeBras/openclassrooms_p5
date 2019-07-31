@@ -40,18 +40,22 @@ function initMap() {
         }
     })
     req.send(null);
-    // Update lat/long value of div when anywhere in the map is clicked    
+    
+    // Update lat/lo value of div when anywhere in the map is clicked    
     google.maps.event.addListener(map,'click',function(event) {
-        document.getElementById('hivelat').value = event.latLng.lat();
-        document.getElementById('hivelng').value =  event.latLng.lng();
         
-        var markerTemp = new google.maps.Marker({
-            position: event.latLng, 
-            map: map, 
-            title: event.latLng.lat()+', '+event.latLng.lng()
-        });
-        
-        
+        var hiveLat = document.getElementById('hivelat');
+        var hiveLng = document.getElementById('hivelng');
+
+        if (hiveLat) {
+            document.getElementById('hivelat').value = event.latLng.lat();
+            document.getElementById('hivelng').value =  event.latLng.lng();
+            var markerTemp = new google.maps.Marker({
+                position: event.latLng, 
+                map: map, 
+                title: event.latLng.lat()+', '+event.latLng.lng()
+            })
+        }
     });
     
                 
