@@ -64,7 +64,7 @@ function initMap() {
                 position : {lat: Number(hive.lat), lng: Number(hive.lng)},
                 map : map,
                 title : hive.name,
-                owner : hive.account_id,
+                owner : hive.owner,
                 address : hive.address,
             });
             // Click on marker brings overlay
@@ -89,15 +89,15 @@ function initOverlay(hive)
 
     let titleElt = document.createElement("h2");
     titleElt.id = "map_overlay_title";
-    titleElt.textContent = "Station sélectionnée : " + hive.name;
+    titleElt.textContent = "Ruche sélectionnée : " + hive.name;
 
     let addressElt = document.createElement("p");
     addressElt.id = "map_overlay_address";
-    addressElt.textContent = hive.address;
+    addressElt.textContent = "Addresse : " + hive.address;
 
     let ownerElt = document.createElement("p");
     ownerElt.id = "map_overlay_address";
-    ownerElt.textContent = hive.account_id;
+    ownerElt.textContent = "Propriétaire : " + hive.owner;
 
 /*     let bikesElt = document.createElement("p");
     bikesElt.id = "section_map_overlay_available_bikes";

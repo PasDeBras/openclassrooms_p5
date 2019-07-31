@@ -7,7 +7,7 @@ include_once './model/HiveManager.php'; // ***
 
 $hives = new OpenClassrooms\P5\Model\HiveManager();
 
-$result = $hives->retrieveHiveMarkers();
+$result = $hives->retrieveHiveMarkers2();
 $numberOfHives = $result->rowCount();
 
 if ($numberOfHives > 0) {
@@ -18,12 +18,13 @@ if ($numberOfHives > 0) {
         extract($row);
 
         $hive = array(
-            "id" => $id,
-            "account_id" => $account_id,
-            "name" => $name,
-            "address" => $address,
-            "lat" => $lat,
-            "lng" => $lng 
+            "id" => $hiveId,
+            "account_id" => $hiveAccountId,
+            "name" => $hiveName,
+            "address" => $hiveAddress,
+            "lat" => $hiveLat,
+            "lng" => $hiveLng,
+            "owner" => $hiveOwner
         );
 
         array_push($hives, $hive);
