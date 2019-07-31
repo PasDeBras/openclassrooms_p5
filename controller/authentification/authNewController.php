@@ -7,14 +7,21 @@ spl_autoload_register('classLoader');
 
 if (!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['email']) && !empty($_POST['firstname']) && !empty($_POST['lastname'])) {
     require_once('model/AccountManager.php');
+
+    $username = htmlspecialchars($_POST['username']);
+    $password = htmlspecialchars($_POST['password']);
+    $email = htmlspecialchars($_POST['email']);
+    $firstname = htmlspecialchars($_POST['firstname']);
+    $lastname = htmlspecialchars($_POST['lastname']);
+
     $accountManager = new AccountManager();
-    $isAccountAvailable = $accountManager->retrieveAccount($_POST['email']);
+    $isAccountAvailable = $accountManager->retrieveAccount($email);
     $accountAvailablility = $isAccountAvailable->fetch();
     
     if (!$accountAvailablility['email']) {
         if (!$accountAvailablility['username']) {
-            $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $accountManager->insertAccount($_POST['username'], $hashedPassword, $_POST['email'], $_POST['firstname'], $_POST['lastname']);
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $accountManager->insertAccount($username, $hashedPassword, $email, $firstname, $lastname);
             $context = 'accountCreated';
             header('Location: index.php?action=auth_Verify');
             
