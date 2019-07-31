@@ -30,7 +30,11 @@ class FriendshiplinksManager extends Manager
     public function readFriendshipLinks($userId)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT friendship_links.id AS linkid, friendship_links.user_1_id AS user1id, friendship_links.user_2_id AS user2id,accounts.id AS accountid, accounts.username AS friendname 
+        $req = $db->prepare('SELECT friendship_links.id AS linkid, 
+        friendship_links.user_1_id AS user1id, 
+        friendship_links.user_2_id AS user2id,
+        accounts.id AS accountid, 
+        accounts.username AS friendname 
         FROM friendship_links 
         INNER JOIN accounts 
         ON (friendship_links.user_1_id = :id AND accounts.id = friendship_links.user_2_id)
