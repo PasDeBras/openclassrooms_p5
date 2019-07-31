@@ -104,6 +104,33 @@ body {
 {
   margin-left: 2% ;
 }
+#newAccountView_div
+{
+
+  background-color: #6a402f;
+  color: #faa01d;
+  width: 15%;
+  margin-top: 5%;
+  margin-left: auto ;
+  margin-right: auto ;
+  text-align: center;
+  border: 10px solid #6a402f;
+}
+#newAccountView_submitBtn
+{
+  margin-top: 10px;
+  padding: 5px 15px; 
+  background: #faa01d; 
+  color: #6a402f;
+  border: 0 none;
+  cursor:pointer;
+
+}
+#newAccountView_submitBtn:hover
+{
+  background: white;
+  color: #faa01d;
+}
 
 footer{
     color: #faa01d;

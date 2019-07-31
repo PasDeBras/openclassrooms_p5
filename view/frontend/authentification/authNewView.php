@@ -3,7 +3,10 @@
 <?php
 ob_start();
 if ($context == NULL || $context == 'existingEmail' || $context == 'existingUser') {?>
+<div id="newAccountView_div">
     <form action="index.php?action=auth_New_Create" method="post">
+        <h1>Creer mon compte</h2>
+
         Nom d'utilisateur:<br>
         <input type="text" name="username" id="username" required><?php if ($context == 'existingUser'){?>Nom d'utilisateur déja existant.<?php } ?><br>
         Mot de passe:<br>
@@ -15,8 +18,10 @@ if ($context == NULL || $context == 'existingEmail' || $context == 'existingUser
         Nom:<br>
         <input type="text" name="lastname">
         <br>
-        <input type="submit" value="Submit">
+        <input id="newAccountView_submitBtn" type="submit" value="Submit">
     </form>
+</div>
+
 <?php
 } elseif ($context == 'accountCreated') {?>
     <p>Compte créé.</p>
