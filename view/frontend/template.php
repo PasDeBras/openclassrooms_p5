@@ -14,15 +14,9 @@
                     <div id="logo_fat"><img src="css/media/beewatch_logo.png" alt="BeeWatch logo"></div>
                 </div>
 
-                <nav class="menu_gobal">
-                    <ul>
-                        <li><a href="index.php">Mission</a></li>
-                    </ul>
-                </nav>
-                <nav class="menu_user">
-                    <ul>
-                        <li><a href="index.php?action=auth_start">Se connecter / creer mon compte</a></li>
-                    </ul>
+                <nav class="navbar">
+                    <a href="index.php">Accueil</a>
+                    <a href="index.php?action=auth_start">Se connecter / creer mon compte</a>
                 </nav>
             </header>
 
