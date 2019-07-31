@@ -89,13 +89,16 @@ function initOverlay(hive)
 {
     let sectionMapOverlayElt = document.getElementById("map_overlay");
 
-/*     let logoElt = document.createElement("img");
-    logoElt.id = "map_overlay_logo";
-    logoElt.src = "media/header/velovlogo.png"; */
+    let titleDivElt = document.createElement("div");
+    titleDivElt.id = "map_overlay_titleDiv";
+
+    let hiveLogoElt = document.createElement("img");
+    hiveLogoElt.id = "hiveLogo";
+    hiveLogoElt.src = markerIconSelector(hive.account_id);
 
     let titleElt = document.createElement("h2");
     titleElt.id = "map_overlay_title";
-    titleElt.textContent = "Ruche sélectionnée : " + hive.name;
+    titleElt.textContent = hive.name;
 
     let addressElt = document.createElement("p");
     addressElt.id = "map_overlay_address";
@@ -133,8 +136,9 @@ function initOverlay(hive)
     }); */
     
     sectionMapOverlayElt.innerHTML = "";
-/*     sectionMapOverlayElt.appendChild(logoElt); */
-    sectionMapOverlayElt.appendChild(titleElt);
+    sectionMapOverlayElt.appendChild(titleDivElt);
+    titleDivElt.appendChild(hiveLogoElt); 
+    titleDivElt.appendChild(titleElt);
     sectionMapOverlayElt.appendChild(addressElt);
     sectionMapOverlayElt.appendChild(ownerElt);
 /*     sectionMapOverlayElt.appendChild(bikesElt);
