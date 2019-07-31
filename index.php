@@ -29,7 +29,7 @@ try {
             disconnectUser();
         /* ------------- User account ------------ */
         } elseif ($_GET['action'] == 'auth_Verify_Cleared') {
-            require('controller/account_management/userAccountController.php');
+            require('controller/hive_management/hiveMapAllController.php');
         } elseif ($_GET['action'] == 'user_Account_Manage') {
             require('controller/account_management/userAccountController.php');
         } elseif ($_GET['action'] == 'user_Account_Change_Password') {
@@ -59,7 +59,7 @@ try {
             require('controller/hive_management/hiveEditorController.php');
         }
     } elseif (!empty($_SESSION['user_username'])) {
-        require('controller/account_management/userAccountController.php');
+        require('controller/homepageLoggedController.php');
     } else {
         require('controller/homepageController.php');
     }
