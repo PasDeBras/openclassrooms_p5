@@ -6,7 +6,10 @@ $loadMap=TRUE; ?>
 <a href="index.php?action=hiveMap_Account_HiveCreator">Creer une ruche</a>
 <a href="index.php?action=hiveMap_Account_HiveEditor">Editer une ruche</a>
 <p>map</p>
-<div id="account_map"></div>
+<section id="map_section">
+    <div id="account_map"></div>
+    <div id="map_overlay"></div>
+</section>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('view/backend/template.php'); ?>
