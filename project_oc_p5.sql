@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 31 juil. 2019 à 14:50
+-- Généré le :  jeu. 01 août 2019 à 17:06
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `surname` varchar(25) NOT NULL,
   `firstname` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `accounts`
@@ -48,7 +48,9 @@ INSERT INTO `accounts` (`id`, `username`, `email`, `password`, `surname`, `first
 (7, 'testuser', 'test@email.com', '$2y$10$HTK.ZYiEoLzhTUe57c32l.gD9YNv7cJchWhhCkW2Dv977AMgAiEym', 'test', 'user'),
 (9, 'testuser3', 'test3@email.com', '$2y$10$lahgv2M5hA8C82/BKuXWz.s8SOHxXKmAaEaEssaCyk95.JrLXpXIq', 'test3', 'user3'),
 (10, 'yoyo', 'yoyo@yoyo.com', '$2y$10$hzUfaDchhRAW/fN01epRS.lDEMotNGKG4pLRd5c5GM6WlctnTRjcG', 'yoyo', 'yoyo'),
-(11, 'toto', 'toto@toto.toto', '$2y$10$BDg3Mqz/9W.ojCOMf6L9OuyGW7MTXinal1fL0KlAVzf.W3hY8QvWy', 'toto', 'toto');
+(11, 'toto', 'toto@toto.toto', '$2y$10$BDg3Mqz/9W.ojCOMf6L9OuyGW7MTXinal1fL0KlAVzf.W3hY8QvWy', 'toto', 'toto'),
+(12, 'Oplah', 'oplah@oplah.oplah', '$2y$10$K3RKwBzwfcPTUXZB76eHauxoYqL988MPtRLgC4btvIj..wMdjtr4W', 'Oplah', 'Douglas'),
+(13, 'Paul', 'paul@paul.paul', '$2y$10$1uLJ6xT47meL7RVNbdLIX.a89lnw/kRY.1/NK1c9zJAGwgejDYqha', 'paul', 'paul');
 
 -- --------------------------------------------------------
 
@@ -62,15 +64,17 @@ CREATE TABLE IF NOT EXISTS `friendship_links` (
   `user_1_id` int(11) NOT NULL,
   `user_2_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `friendship_links`
 --
 
 INSERT INTO `friendship_links` (`id`, `user_1_id`, `user_2_id`) VALUES
+(13, 11, 7),
 (11, 10, 7),
-(10, 11, 10);
+(10, 11, 10),
+(14, 11, 8);
 
 -- --------------------------------------------------------
 
@@ -84,14 +88,41 @@ CREATE TABLE IF NOT EXISTS `friendship_requests` (
   `sender_id` int(11) NOT NULL,
   `receiver_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `friendship_requests`
 --
 
 INSERT INTO `friendship_requests` (`id`, `sender_id`, `receiver_id`) VALUES
-(15, 10, 7);
+(52, 11, 12),
+(51, 11, 9),
+(50, 13, 11),
+(15, 10, 7),
+(49, 12, 11);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `hive_incidents`
+--
+
+DROP TABLE IF EXISTS `hive_incidents`;
+CREATE TABLE IF NOT EXISTS `hive_incidents` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `hive_id` int(11) NOT NULL,
+  `owner_id` int(11) NOT NULL,
+  `incident` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `hive_incidents`
+--
+
+INSERT INTO `hive_incidents` (`id`, `hive_id`, `owner_id`, `incident`) VALUES
+(10, 22, 11, 'SDFSDF SDF SDF'),
+(9, 16, 11, 'SPLENDID');
 
 -- --------------------------------------------------------
 
@@ -109,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `hive_markers` (
   `lng` float(10,6) NOT NULL,
   `private` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `hive_markers`
@@ -128,10 +159,13 @@ INSERT INTO `hive_markers` (`id`, `account_id`, `name`, `address`, `lat`, `lng`,
 (13, 10, 'ruchemagenta', 'osef', -33.902634, 151.210373, 0),
 (14, 10, 'seahive', 'sea', -33.857574, 151.263947, 0),
 (15, 10, 'bridgehive', 'test', -33.854153, 151.212784, 0),
-(16, 11, 'sdfsdf', 'sdfsdf', -33.861851, 151.246429, 0),
+(16, 11, 'Classic hive', 'classic ave', -33.861851, 151.246429, 0),
 (17, 10, 'Univruche', 'univ', -33.888374, 151.187332, 0),
-(18, 11, 'Mascott ruche', 'meh', -33.922836, 151.196304, 0),
-(19, 10, 'Lane hive', 'lane', -33.819649, 151.148239, 0);
+(18, 11, 'Mascott ruche', 'meh', -33.928394, 151.207458, 0),
+(19, 10, 'Lane hive', 'lane', -33.819649, 151.148239, 0),
+(20, 11, 'Road ruche 1', 'The road', -33.873966, 151.149445, 1),
+(21, 11, 'Hive Marrick', 'marrickville', -33.906170, 151.136398, 0),
+(22, 11, 'Chullora', 'chullo', -33.885822, 151.047821, 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
