@@ -7,10 +7,14 @@ class FriendshiplinksManager extends Manager
     public function createFriendshipLink($user_1_id, $user_2_id)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('INSERT INTO friendship_links(user_1_id, user_2_id) VALUES(?,?)');
-        $req->execute(array($user_1_id, $user_2_id));
-
-        return $req;
+        $check = $this->checkExistingFriendshipLink($user_1_id, $user_2_id);
+        if (!$check) {
+            $req = $db->prepare('INSERT INTO friendship_links(user_1_id, user_2_id) VALUES(?,?)');
+            $req->execute(array($user_1_id, $user_2_id));
+            return $req;
+        } else {
+            echo "Friendship already exist";
+        }    
     }
 
     public function checkExistingFriendshipLink($myId, $friendId){
