@@ -24,9 +24,10 @@ $title = 'BEEWATCH- Friendlist'; ?>
                             <a class="friend_card_button_refuse" href="index.php?action=user_Account_Inbox&refuse_FriendshipRequest=<?=$data['requestid']?>">Refuser</a>
                         </div>
                     </div>
-            <?php }
-        }?>
-        </div>
+                <?php }?>
+            </div>
+        <?php }?>
+        
 
         <div id="friendship">
             
