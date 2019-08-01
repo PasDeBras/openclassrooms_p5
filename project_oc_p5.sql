@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 01 août 2019 à 17:06
+-- Généré le :  jeu. 01 août 2019 à 21:41
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -37,20 +37,24 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `surname` varchar(25) NOT NULL,
   `firstname` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `accounts`
 --
 
 INSERT INTO `accounts` (`id`, `username`, `email`, `password`, `surname`, `firstname`) VALUES
-(8, 'testuser2', 'test2@email.com', '$2y$10$QJX.BeRWvpqOLbljb.2V2e21S7bJv8kddznNHQBPty05k9HXjRzC6', 'test2', 'User2'),
-(7, 'testuser', 'test@email.com', '$2y$10$HTK.ZYiEoLzhTUe57c32l.gD9YNv7cJchWhhCkW2Dv977AMgAiEym', 'test', 'user'),
-(9, 'testuser3', 'test3@email.com', '$2y$10$lahgv2M5hA8C82/BKuXWz.s8SOHxXKmAaEaEssaCyk95.JrLXpXIq', 'test3', 'user3'),
-(10, 'yoyo', 'yoyo@yoyo.com', '$2y$10$hzUfaDchhRAW/fN01epRS.lDEMotNGKG4pLRd5c5GM6WlctnTRjcG', 'yoyo', 'yoyo'),
-(11, 'toto', 'toto@toto.toto', '$2y$10$BDg3Mqz/9W.ojCOMf6L9OuyGW7MTXinal1fL0KlAVzf.W3hY8QvWy', 'toto', 'toto'),
-(12, 'Oplah', 'oplah@oplah.oplah', '$2y$10$K3RKwBzwfcPTUXZB76eHauxoYqL988MPtRLgC4btvIj..wMdjtr4W', 'Oplah', 'Douglas'),
-(13, 'Paul', 'paul@paul.paul', '$2y$10$1uLJ6xT47meL7RVNbdLIX.a89lnw/kRY.1/NK1c9zJAGwgejDYqha', 'paul', 'paul');
+(21, 'Françoise89', 'francoise89@email.com', '$2y$10$B43vC5F9WUft9YtpCaUaPOkAQHi1F6fiWsXH6WMy/9Hew7ukvXJFa', 'Françoise', 'Chaloupe'),
+(20, 'Sandrine07', 'sandrine07@email.com', '$2y$10$B43vC5F9WUft9YtpCaUaPOkAQHi1F6fiWsXH6WMy/9Hew7ukvXJFa', 'Sandrine', 'Dulac'),
+(17, 'Luc12', 'luc12@email.fr', '$2y$10$B43vC5F9WUft9YtpCaUaPOkAQHi1F6fiWsXH6WMy/9Hew7ukvXJFa', 'Luc', 'Moulin'),
+(16, 'John44', 'john44@email.com', '$2y$10$B43vC5F9WUft9YtpCaUaPOkAQHi1F6fiWsXH6WMy/9Hew7ukvXJFa', 'John', 'Doe'),
+(19, 'David63', 'david63@email.com', '$2y$10$B43vC5F9WUft9YtpCaUaPOkAQHi1F6fiWsXH6WMy/9Hew7ukvXJFa', 'David', 'Fermier'),
+(18, 'Apicultor', 'apicultor@email.com', '$2y$10$B43vC5F9WUft9YtpCaUaPOkAQHi1F6fiWsXH6WMy/9Hew7ukvXJFa', 'Martin', 'Forêt'),
+(22, 'Tiphaine72', 'tiphaine72@email.com', '$2y$10$B43vC5F9WUft9YtpCaUaPOkAQHi1F6fiWsXH6WMy/9Hew7ukvXJFa', 'Tiphaine', 'Muraille'),
+(23, 'Melanie01', 'melanie01@email.com', '$2y$10$B43vC5F9WUft9YtpCaUaPOkAQHi1F6fiWsXH6WMy/9Hew7ukvXJFa', 'Mélanie', 'Surault'),
+(24, 'Paul02', 'paul@email.com', '$2y$10$B43vC5F9WUft9YtpCaUaPOkAQHi1F6fiWsXH6WMy/9Hew7ukvXJFa', 'Paul', 'Tertre'),
+(25, 'Mireille41', 'mireille41@email.com', '$2y$10$O841E5pNA3pBxfPfL7yF3OZP55i0sMOVrM3OUV70q/0wPi4FW6a5i', 'Mireille', 'Vigne'),
+(26, 'Claude10', 'claude10@email.com', '$2y$10$HdonSeUt5EtTFk97p3Yil.SxKgtH0JkO7QRn.5WpuHIHua.QiheT6', 'Claude', 'Boucher');
 
 -- --------------------------------------------------------
 
@@ -64,17 +68,24 @@ CREATE TABLE IF NOT EXISTS `friendship_links` (
   `user_1_id` int(11) NOT NULL,
   `user_2_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `friendship_links`
 --
 
 INSERT INTO `friendship_links` (`id`, `user_1_id`, `user_2_id`) VALUES
-(13, 11, 7),
-(11, 10, 7),
-(10, 11, 10),
-(14, 11, 8);
+(26, 21, 22),
+(25, 17, 18),
+(24, 19, 18),
+(23, 17, 19),
+(27, 21, 23),
+(38, 18, 20),
+(39, 18, 21),
+(30, 20, 26),
+(29, 20, 25),
+(28, 16, 24),
+(35, 16, 20);
 
 -- --------------------------------------------------------
 
@@ -88,18 +99,14 @@ CREATE TABLE IF NOT EXISTS `friendship_requests` (
   `sender_id` int(11) NOT NULL,
   `receiver_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=68 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `friendship_requests`
 --
 
 INSERT INTO `friendship_requests` (`id`, `sender_id`, `receiver_id`) VALUES
-(52, 11, 12),
-(51, 11, 9),
-(50, 13, 11),
-(15, 10, 7),
-(49, 12, 11);
+(67, 21, 19);
 
 -- --------------------------------------------------------
 
@@ -114,15 +121,16 @@ CREATE TABLE IF NOT EXISTS `hive_incidents` (
   `owner_id` int(11) NOT NULL,
   `incident` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `hive_incidents`
 --
 
 INSERT INTO `hive_incidents` (`id`, `hive_id`, `owner_id`, `incident`) VALUES
-(10, 22, 11, 'SDFSDF SDF SDF'),
-(9, 16, 11, 'SPLENDID');
+(13, 33, 24, 'Après grand vent, partie cassée'),
+(12, 25, 20, 'La ruche est ouverte !'),
+(14, 29, 19, 'Ca déborde ! Recolte en urgence !');
 
 -- --------------------------------------------------------
 
@@ -140,32 +148,26 @@ CREATE TABLE IF NOT EXISTS `hive_markers` (
   `lng` float(10,6) NOT NULL,
   `private` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `hive_markers`
 --
 
 INSERT INTO `hive_markers` (`id`, `account_id`, `name`, `address`, `lat`, `lng`, `private`) VALUES
-(1, 8, 'Ruche rouge', '580 Darling Street, Rozelle, NSW', -33.861034, 151.171936, 0),
-(2, 8, 'Ruche jaune', '76 Wilford Street, Newtown, NSW', -33.898113, 151.174469, 0),
-(3, 8, 'Ruche verte', 'Greenwood Plaza, 36 Blue St, North Sydney NSW', -33.840282, 151.207474, 0),
-(4, 8, 'Ruche bleue', '7A, 2 Huntley Street, Alexandria, NSW', -33.910751, 151.194168, 0),
-(5, 8, 'Ruche blanche', '16 Foster Street, Surry Hills, NSW', -33.879917, 151.210449, 0),
-(6, 8, 'Ruche noire', '43 Macpherson Street, Bronte, NSW', -33.906357, 151.263763, 0),
-(7, 8, 'Ruche violette', '60-64 Reservoir Street, Surry Hills, NSW', -33.881123, 151.209656, 0),
-(8, 0, 'Ruche orange', '60 Riley Street, Darlinghurst, NSW', -33.874737, 151.215530, 0),
-(12, 10, 'testrucheac', '7A, 2 Huntley Street, Alexandria, NSW', -33.924019, 151.244720, 0),
-(13, 10, 'ruchemagenta', 'osef', -33.902634, 151.210373, 0),
-(14, 10, 'seahive', 'sea', -33.857574, 151.263947, 0),
-(15, 10, 'bridgehive', 'test', -33.854153, 151.212784, 0),
-(16, 11, 'Classic hive', 'classic ave', -33.861851, 151.246429, 0),
-(17, 10, 'Univruche', 'univ', -33.888374, 151.187332, 0),
-(18, 11, 'Mascott ruche', 'meh', -33.928394, 151.207458, 0),
-(19, 10, 'Lane hive', 'lane', -33.819649, 151.148239, 0),
-(20, 11, 'Road ruche 1', 'The road', -33.873966, 151.149445, 1),
-(21, 11, 'Hive Marrick', 'marrickville', -33.906170, 151.136398, 0),
-(22, 11, 'Chullora', 'chullo', -33.885822, 151.047821, 0);
+(33, 24, 'Ruche Poire', 'rue Costes & Lebrix, 44000 Nantes', 47.230427, -1.564443, 0),
+(32, 23, 'Ruche Pivoinne', 'rue du Bois, 44000 Nantes', 47.201752, -1.596154, 0),
+(31, 22, 'Ruche du lycée', 'rue Gaëtan Rondeau, 44000 Nantes', 47.208546, -1.532722, 0),
+(30, 18, 'Parc des Dervallières', 'Parc des Dervalières, 44000 Nantes', 47.224941, -1.593030, 0),
+(29, 19, 'Ruche Veolia', 'rue Françoise Giroud, 44000 Nantes', 47.209045, -1.540698, 0),
+(28, 16, 'Parc de Beaulieu', 'Parc de Beaulieu, 44000 Nantes', 47.212234, -1.523138, 0),
+(27, 17, 'Parc de Procé', 'Boulevard des Anglais, 44000 Nantes', 47.223801, -1.582631, 0),
+(26, 20, 'Tennis Club 2', 'rue des Champs Garnier, 44400 Rezé', 47.182270, -1.567478, 0),
+(25, 20, 'Tennis Club 1', 'rue des Champs Garnier, 44400 Rezé', 47.182327, -1.567564, 0),
+(24, 21, 'Parc de la Moutonnerie', 'rue Tivoli, 44000 Nantes', 47.220840, -1.533229, 0),
+(23, 21, 'Jardin des Plantes', 'Boulevard de Stalingrad, 44000 Nantes', 47.220009, -1.543264, 0),
+(34, 25, 'Ruche de la terrasse', 'Terrasse des Vents, 44000 Nantes', 47.205448, -1.570140, 0),
+(35, 26, 'Ruche publique', 'Square Vertais; 44000 Nantes', 47.202133, -1.546141, 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
