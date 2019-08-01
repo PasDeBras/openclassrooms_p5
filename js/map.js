@@ -137,7 +137,7 @@ function initOverlay(hive)
 
         let incidentFormElt = document.createElement("form");
         incidentFormElt.id = "incidentForm";
-        incidentFormElt.action = "index.php?action=hiveMap_CreateIncident&Hive=" + hive.id + "&Owner=" + hive.owner;
+        incidentFormElt.action = "index.php?action=hiveMap_CreateIncident&Hive=" + hive.id + "&Owner=" + hive.account_id;
         incidentFormElt.method = "post";
 
         let incidentFormPElt = document.createElement("p");
@@ -148,7 +148,7 @@ function initOverlay(hive)
         incidentFormTextAreaElt.id = "incidentFormInput";
         incidentFormTextAreaElt.type = "text";
         incidentFormTextAreaElt.name = "incident";
-        incidentFormTextAreaElt.maxlength= "60";
+        incidentFormTextAreaElt.maxlength = "255";
 
         let incidentConfirmButtonElt = document.createElement("input");
         incidentConfirmButtonElt.id = "map_overlay_incidentConfirmationButton";

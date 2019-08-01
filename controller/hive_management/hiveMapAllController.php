@@ -11,9 +11,10 @@ $incidentManager = new IncidentManager();
 if (!empty($_GET['Hive'])) {
     if (!empty($_GET['Owner'])) {
         if (!empty($_POST['incident'])) {
-            $incident = $incidentManager->createIncident($_GET['Hive'], $_GET['Hive'], $_POST['incident']);
+            $incident = $incidentManager->createIncident($_GET['Hive'], $_GET['Owner'], $_POST['incident']);
             $message = "Signalement réussi !";
             echo "<script type='text/javascript'>alert('$message');</script>";
+            echo "succes";
         } else {
             echo "variable incident vide ou manquante";
         }   
