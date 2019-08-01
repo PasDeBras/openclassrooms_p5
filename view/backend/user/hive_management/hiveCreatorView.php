@@ -37,6 +37,10 @@ if ($context == NULL) {?>
                     <p class="hiveEditor_form_typable_left">Longitude: </p>
                     <input class="hiveEditor_form_typable_right" type="text" name="hivelng" id="hivelng" required>
                 </div>
+                <div class="hiveEditor_form_clickable">
+                    <p class="hiveEditor_form_clickable_text">Privée </p>
+                    <input class="hiveEditor_form_clickable_checkbox" type="checkbox" name="private" id="private" value="1" />
+                </div>
                 <input class="hiveEditor_form_inputBtn" type="submit" value="Submit">
             </div>
         </form>
