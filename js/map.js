@@ -114,7 +114,12 @@ function initOverlay(hive)
 
     let ownerElt = document.createElement("p");
     ownerElt.id = "map_overlay_owner";
-    ownerElt.textContent = "Propriétaire : " + hive.owner;
+    if (complete_map) {
+        ownerElt.textContent = "Propriétaire : " + hive.owner;
+    } else if (account_map) {
+        ownerElt.textContent = "Propriétaire : vous";
+    };
+    
 
     let incidentDivElt = document.createElement("div");
     incidentDivElt.id = "map_overlay_incidentDiv";
@@ -168,8 +173,13 @@ function initOverlay(hive)
     sectionMapOverlayElt.appendChild(contentDivElt);
     contentDivElt.appendChild(addressElt);
     contentDivElt.appendChild(ownerElt);
-    contentDivElt.appendChild(incidentImgElt);
-    contentDivElt.appendChild(incidentButtonElt);
+    if (complete_map) {
+        contentDivElt.appendChild(incidentImgElt);
+        contentDivElt.appendChild(incidentButtonElt);
+    } else if (account_map) {
+        
+    };
+
 
 };
 function markerIconSelector(hiveId)

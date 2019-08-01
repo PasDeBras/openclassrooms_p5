@@ -23,7 +23,7 @@ if ($numberOfHives > 0) {
             "name" => $name,
             "address" => $address,
             "lat" => $lat,
-            "lng" => $lng 
+            "lng" => $lng
         );
 
         array_push($hives, $hive);
