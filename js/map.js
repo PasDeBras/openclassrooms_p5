@@ -132,7 +132,7 @@ function initOverlay(hive)
 
         let incidentFormElt = document.createElement("form");
         incidentFormElt.id = "incidentForm";
-        incidentFormElt.action = "index.php?action=hiveMap_CreateIncident&Hive=" + hive.id;
+        incidentFormElt.action = "index.php?action=hiveMap_CreateIncident&Hive=" + hive.id + "&Owner=" + hive.owner;
         incidentFormElt.method = "post";
 
         let incidentFormPElt = document.createElement("p");

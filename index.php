@@ -57,6 +57,9 @@ try {
             require('controller/hive_management/hiveCreatorController.php');
         }elseif ($_GET['action'] == 'hiveMap_Account_HiveEditor') {
             require('controller/hive_management/hiveEditorController.php');
+            /* ----------- Incidents ---------- */
+        }elseif ($_GET['action'] == 'hiveMap_CreateIncident') {
+            require('controller/hive_management/hiveMapAllController.php');
         }
     } elseif (!empty($_SESSION['user_username'])) {
         require('controller/homepageLoggedController.php');
