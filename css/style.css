@@ -507,6 +507,66 @@ footer{
   font-size: 1em;
 }
 
+#inbox_div_alert_panel h2
+{
+  background: #6a402f;
+  border: 4px solid white;
+  padding: 4px;
+  color: white;
+}
+.incidentAlert_Div
+{
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  flex-wrap: nowrap;
+}
+.incidentAlert_Div p
+{
+
+  background-color: white;
+  border: 4px solid white;
+  border-radius: 15px 0px 0px 15px;
+  color: #6a402f;
+  margin: 5px 0px 0px 5px;
+}
+.incidentAlert_Div a
+{
+
+  background-color: #faa01d;
+  border: 4px solid #faa01d;
+  border-radius: 0px 15px 15px 0px;
+  color: white;
+  margin: 0px 5px 5px 0px;
+  text-decoration: none;
+}
+.incidentAlert_Div a:hover
+{
+
+  background-color: #6a402f;
+  border: 4px solid #6a402f;
+}
+.incidentAlert_Div_Img
+{
+  height: 29px;
+  width: 32px;
+}
+.incidentIdSpan
+{
+  color: grey;
+  font-size: 1em;
+}
+.incidentHiveSpan
+{
+  color: #6a402f;
+  font-size: 1.2em;
+}
+.incidentProblemSpan
+{
+  color: #6a402f;
+  font-size: 1em;
+}
+
 userid {
     visibility: hidden;
 }
