@@ -3,9 +3,11 @@ $title = 'BEEWATCH- Friendlist'; ?>
 
 <?php ob_start(); ?>
 <div id="inbox_div">
+    <?php if ($context != NULL) {?>
     <div id="context_alertBox">
-        <?php if ($context == "friendRequest_sent") {?><p>Requête d'amitié envoyée</p><?php } elseif ($context == "friendRequest_alreadyExist") {?><p>Vous avez déja envoyé une requête à ce membre!</p><?php } elseif ($context == "friendLink_created") {?><p>Lien d'amitié créé !</p><?php } elseif ($context == "friendRequest_refused") {?><p>Vous avez refusé cette requête !</p><?php } elseif ($context == "friendLink_deleted") {?><p>Vous avez choisi de supprimer cette relation !</p><?php } elseif ($context == NULL) {}?>
+        <?php if ($context == "friendRequest_sent") {?><p>Requête d'amitié envoyée</p><?php } elseif ($context == "friendRequest_alreadyExist") {?><p>Vous avez déja envoyé une requête à ce membre!</p><?php } elseif ($context == "friendLink_created") {?><p>Lien d'amitié créé !</p><?php } elseif ($context == "friendRequest_refused") {?><p>Vous avez refusé cette requête !</p><?php } elseif ($context == "friendLink_deleted") {?><p>Vous avez choisi de supprimer cette relation !</p><?php } else {}?>
     </div>
+    <?php }?>
     <div id="inbox_div_friendship_panel">
     
         
