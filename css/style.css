@@ -218,13 +218,23 @@ footer{
   padding-left: 15px;
   padding-right: 15px;
 }
-
-#map_overlay_address, #map_overlay_owner
+#incidentForm
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#map_overlay_address, #map_overlay_owner, #incidentFormP
 {
   background-color: white;
   border: 4px solid white;
   border-radius: 15px;
   color: #6a402f;
+}
+
+#incidentFormInput {
+  width:250px;
+  height: 200px;
 }
 
 #map_hive_controls

@@ -116,32 +116,49 @@ function initOverlay(hive)
     ownerElt.id = "map_overlay_owner";
     ownerElt.textContent = "Propriétaire : " + hive.owner;
 
-/*     let bikesElt = document.createElement("p");
-    bikesElt.id = "section_map_overlay_available_bikes";
-    bikesElt.textContent = "Nombre de vélos libres : " + marker.available_bikes + "/" + marker.total_bikes; */
+    let incidentDivElt = document.createElement("div");
+    incidentDivElt.id = "map_overlay_incidentDiv";
 
-/*     let buttonElt = document.createElement("button");
-    buttonElt.id = "section_map_overlay_reservation_button";
-    buttonElt.textContent = "RESERVER"; */
-    
-    // Reservation button color coding
-/*     if (marker.available_bikes > 0) {
-        buttonElt.style.backgroundColor = "green";
-    } else {
-        buttonElt.style.backgroundColor = "red";
-    } */
+    let incidentImgElt = document.createElement("img");
+    incidentImgElt.id = "map_overlay_incidentIMG";
+    incidentImgElt.src = "css/media/warning.png";
 
-    // Button authorize reservation if possible
-/*     buttonElt.addEventListener("click", function(){
-        if (marker.available_bikes < 1) {
-            alert("Cette station n'a plus de vélos disponibles (" + marker.available_bikes + "/" + marker.total_bikes + ")");
-        } else {
-            console.log("Reservation demandée");
-            document.getElementById("section_reservation").innerHTML = "";
-            canvas = new Canvas("section_reservation");
-            let form = new Form("section_reservation");
+    let incidentButtonElt = document.createElement("button");
+    incidentButtonElt.id = "map_overlay_incidentButton";
+    incidentButtonElt.textContent = "Signaler un incident";
+
+    incidentButtonElt.addEventListener("click", function(){
+        let overlayContent = document.getElementById("map_overlay_contentDiv");
+
+        let incidentFormElt = document.createElement("form");
+        incidentFormElt.id = "incidentForm";
+        incidentFormElt.action = "index.php?action=hiveMap_CreateIncident&Hive=" + hive.id;
+        incidentFormElt.method = "post";
+
+        let incidentFormPElt = document.createElement("p");
+        incidentFormPElt.id = "incidentFormP";
+        incidentFormPElt.textContent = "Décrivez le probleme:";
+
+        let incidentFormTextAreaElt = document.createElement("textarea");
+        incidentFormTextAreaElt.id = "incidentFormInput";
+        incidentFormTextAreaElt.type = "text";
+        incidentFormTextAreaElt.name = "incident";
+        incidentFormTextAreaElt.maxlength= "60";
+
+        let incidentConfirmButtonElt = document.createElement("input");
+        incidentConfirmButtonElt.id = "map_overlay_incidentConfirmationButton";
+        incidentConfirmButtonElt.type = "submit";
+        incidentConfirmButtonElt.value = "Confirmer";
+
+        while (overlayContent.hasChildNodes()) {   
+            overlayContent.removeChild(overlayContent.firstChild);
         }
-    }); */
+        contentDivElt.appendChild(incidentFormElt);
+        incidentFormElt.appendChild(incidentFormPElt);
+        incidentFormElt.appendChild(incidentFormTextAreaElt);
+        incidentFormElt.appendChild(incidentImgElt);
+        incidentFormElt.appendChild(incidentConfirmButtonElt);
+    });
     
     sectionMapOverlayElt.innerHTML = "";
     sectionMapOverlayElt.appendChild(titleDivElt);
@@ -151,8 +168,9 @@ function initOverlay(hive)
     sectionMapOverlayElt.appendChild(contentDivElt);
     contentDivElt.appendChild(addressElt);
     contentDivElt.appendChild(ownerElt);
-/*     sectionMapOverlayElt.appendChild(bikesElt);
-    sectionMapOverlayElt.appendChild(buttonElt); */
+    contentDivElt.appendChild(incidentImgElt);
+    contentDivElt.appendChild(incidentButtonElt);
+
 };
 function markerIconSelector(hiveId)
 {
