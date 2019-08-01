@@ -42,6 +42,8 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
 
         header('Location: index.php?action=auth_Verify_Cleared');
     } else {}
+} elseif ($_GET['account_Created'] == 1) {
+    $context = 'accountCreated';
 } else {
     $context = NULL;
 }

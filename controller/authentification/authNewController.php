@@ -23,7 +23,7 @@ if (!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['e
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
             $accountManager->insertAccount($username, $hashedPassword, $email, $firstname, $lastname);
             $context = 'accountCreated';
-            header('Location: index.php?action=auth_Verify');
+            header('Location: index.php?action=auth_Verify&account_Created=1');
             
         } else {
             $context = 'existingUser';

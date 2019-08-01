@@ -20,7 +20,7 @@ if ($context == NULL || $context == 'existingEmail' || $context == 'existingUser
         Nom:<br>
         <input type="text" name="lastname">
         <br>
-        <input id="newAccountView_submitBtn" type="submit" value="Submit" onclick="return passwordValidator()">
+        <input id="AccountView_submitBtn" type="submit" value="Submit" onclick="return passwordValidator()">
     </form>
 </div>
 
