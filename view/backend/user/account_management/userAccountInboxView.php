@@ -44,7 +44,14 @@ $title = 'BEEWATCH- Friendlist'; ?>
     
 
     <div id="inbox_div_alert_panel">
-            <h2>Alertes</h2>
+        <h2>Alertes</h2>
+        <div id="inbox_div_alert_panel_allDiv">
+            <?php while ($incident = $incidents->fetch()) {?>
+            <div class="incidentAlert_Div">
+                <p><span>INCIDENTID#<?= $incident['incidentId'] ?></span> : ruche <span><?= $incident['hiveName'] ?></span> - <span><?= $incident['incident'] ?></span><a class="incidentAlert_Div_validate" href="index.php?action=user_Account_Inbox&delete_Incident=<?=$incident['incidentId']?>">Retirer</a></p>
+            </div>
+            <?php }?>
+        </div>
     </div>
 </div>
 

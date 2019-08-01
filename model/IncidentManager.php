@@ -23,7 +23,7 @@ class IncidentManager extends Manager
         INNER JOIN hive_markers
         ON hive_incidents.owner_id = ?
         AND hive_markers.id = hive_incidents.hive_id');
-        $req->execute(array($account_Id));
+        $req->execute(array($accountId));
         return $req;
     }
 

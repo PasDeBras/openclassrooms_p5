@@ -7,6 +7,7 @@ spl_autoload_register('classLoader');
 
 $inboxManager = new FriendshipRequestsManager();
 $friendshipLinksManager = new FriendShipLinksManager();
+$incidentManager = new IncidentManager();
 
 if (!empty($_GET['send_FriendshipRequest'])) 
 {
@@ -33,6 +34,11 @@ if (!empty($_GET['send_FriendshipRequest']))
   $context= "deleted";
   echo "deleted friendship";
   $deleteFriendshipRequest = $friendshipLinksManager->deleteFriendshipLink($_GET['delete_Friendship']);
+} elseif (!empty($_GET['delete_Incident'])) 
+{
+  $context= "deletedIncident";
+  echo "deleted incident";
+  $deleteincident = $incidentManager->deleteIncident($_GET['delete_Incident']);
 }
 else 
 {
@@ -42,4 +48,5 @@ else
 }
 $allFriendships = $friendshipLinksManager->readFriendshipLinks($_SESSION['id']);
 $friendshipRequests = $inboxManager->readFriendshipRequests($_SESSION['id']);
+$incidents = $incidentManager->readAllIncidents($_SESSION['id']);
 require('view/backend/user/account_management/userAccountInboxView.php');

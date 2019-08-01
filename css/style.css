@@ -410,7 +410,12 @@ footer{
   color: #faa01d;
 }
 /* inbox */
-#inbox_div_friendship_panel
+#inbox_div
+{
+  display: flex;
+  flex-direction: column;
+}
+#inbox_div_friendship_panel, #inbox_div_alert_panel
 {
   display: flex;
   flex-direction: column;
