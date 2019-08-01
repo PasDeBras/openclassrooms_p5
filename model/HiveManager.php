@@ -6,7 +6,17 @@ class HiveManager extends Manager
     public function retrieveHiveMarkers()
     {
         $db = $this->dbConnect();
-        $hiveMarkers = $db->query('SELECT * FROM hive_markers WHERE 1'); // -where
+        $hiveMarkers = $db->query('SELECT hive_markers.id AS hiveId, 
+        hive_markers.account_id AS hiveAccountId, 
+        hive_markers.name AS hiveName,
+        hive_markers.address AS hiveAddress,
+        hive_markers.lat AS hiveLat,
+        hive_markers.lng AS hiveLng,
+        accounts.username AS hiveOwner
+        FROM hive_markers
+        INNER JOIN accounts
+        WHERE hive_markers.account_id = accounts.id
+        AND hive_markers.private = 0');
         return $hiveMarkers;
     }
 

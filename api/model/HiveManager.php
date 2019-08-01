@@ -8,12 +8,6 @@ class HiveManager extends Manager
     public function retrieveHiveMarkers()
     {
         $db = $this->dbConnect();
-        $hiveMarkers = $db->query('SELECT * FROM hive_markers');
-        return $hiveMarkers;
-    }
-    public function retrieveHiveMarkers2()
-    {
-        $db = $this->dbConnect();
         $hiveMarkers = $db->query('SELECT hive_markers.id AS hiveId, 
         hive_markers.account_id AS hiveAccountId, 
         hive_markers.name AS hiveName,
@@ -23,7 +17,8 @@ class HiveManager extends Manager
         accounts.username AS hiveOwner
         FROM hive_markers
         INNER JOIN accounts
-        WHERE hive_markers.account_id = accounts.id');
+        WHERE hive_markers.account_id = accounts.id
+        AND hive_markers.private = 0');
         return $hiveMarkers;
     }
 
@@ -35,44 +30,5 @@ class HiveManager extends Manager
         return $req;
     }
 
-    public function retrieveHiveMarker($id)
-    {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT * FROM hive_markers WHERE id = ?');
-        $req->execute(array($id));
-        return $req;
-    }
 
-    public function addHiveMarker($account_id, $name, $address, $lat, $lng)
-    {
-        $db = $this->dbConnect();
-        $markers = $db->prepare('INSERT INTO hive_markers(account_id, name, address, lat, lng) VALUES(?, ?, ?, ?, ?)');
-        $executeRequest = $markers->execute(array($account_id, $name, $address, $lat, $lng));
-
-        return $executeRequest;
-    }
-
-    public function updateHiveMarker($id, $name, $address, $lat, $lng)
-    {
-        $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE hive_markers SET name = :newname, address = :newaddress, lat = :newlat, lng = :newlng WHERE id = :markerid');
-        $req->execute(array(
-            'newname' => $name,
-            'newaddress' => $address,
-            'newlat' => $lat,
-            'newlng' => $lng,
-            'markerid' => $id,
-        ));
-
-        return $req;
-    }
-
-    public function deleteHiveMarker($id)
-    {
-        $db = $this->dbConnect();
-        $req = $db->prepare('DELETE FROM hive_markers WHERE `id` = ?');
-        $req->execute(array($id));
-
-        return $req;
-    }
 }

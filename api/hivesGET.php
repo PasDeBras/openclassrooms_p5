@@ -7,7 +7,7 @@ include_once './model/HiveManager.php'; // ***
 
 $hives = new OpenClassrooms\P5\Model\HiveManager();
 
-$result = $hives->retrieveHiveMarkers2();
+$result = $hives->retrieveHiveMarkers();
 $numberOfHives = $result->rowCount();
 
 if ($numberOfHives > 0) {
