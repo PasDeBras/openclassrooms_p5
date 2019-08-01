@@ -322,6 +322,7 @@ footer{
 {
   color: grey;
   font-size: 1em;
+  
 }
 .hiveCard_contentDiv
 {
@@ -407,6 +408,98 @@ footer{
   background-color: #6a402f;
   border: 10px solid #6a402f;
   color: #faa01d;
+}
+/* inbox */
+#inbox_div_friendship_panel
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
+  height: auto; 
+  padding-top: 10px;
+  margin: 5px 5px 5px 5px;
+  background: repeating-linear-gradient(
+    135deg,
+  #faa01d,
+  #faa01d 20px,
+  #6a402f 20px,
+  #6a402f 35px
+  );
+  border: 5px solid white;
+  box-shadow: 2px 2px 5px black;
+}
+#requests, #friendship
+{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.friend_card
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150px;
+  height: auto; 
+  padding-top: 10px;
+  margin: 5px 5px 5px 5px;
+  background: #6a402f;
+  color: white;
+  border: 5px solid white;
+  box-shadow: 2px 2px 5px black;
+}
+.friend_card:hover
+{
+  background: #faa01d;
+  color: white;
+  border: 5px solid white;
+  box-shadow: 2px 2px 5px black;
+}
+.friend_card_name
+{
+  background-color: white;
+  border: 4px solid white;
+  border-radius: 15px 15px 15px 15px;
+  color: #6a402f;
+  margin: 5px 5px 5px 5px;
+}
+.friendrequest_card_buttons
+{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.friend_card_button, .friend_card_button_accept, .friend_card_button_refuse
+{
+  background-color: white;
+  border: 10px solid white;
+  color: #6a402f;
+  text-decoration: none;
+}
+.friend_card_button_accept:hover
+{
+  color: greenyellow;
+}
+.friend_card_button:hover, .friend_card_button_refuse:hover
+{
+  color: red;
+}
+#inbox_div_friendship_panel_title, #inbox_div_friendship_panel_title_sub
+{
+  background: #6a402f;
+  border: 4px solid white;
+  padding: 4px;
+  color: white;
+}
+#inbox_div_friendship_panel_title
+{
+  font-size: 2em;
+}
+#inbox_div_friendship_panel_title_sub
+{
+  font-size: 1em;
 }
 
 userid {
