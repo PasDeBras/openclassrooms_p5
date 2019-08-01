@@ -237,6 +237,20 @@ footer{
   height: 200px;
 }
 
+#map_overlay_incidentButton, #map_overlay_incidentConfirmationButton
+{
+  background-color: white;
+  border: 10px solid white;
+  color: #6a402f;
+  text-decoration: none;
+}
+#map_overlay_incidentButton:hover, #map_overlay_incidentConfirmationButton:hover
+{
+  background-color: #6a402f;
+  border: 10px solid #6a402f;
+  color: #faa01d;
+}
+
 #map_hive_controls
 {
   display: flex;
