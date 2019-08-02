@@ -36,7 +36,6 @@ try {
             require('controller/account_management/userAccountPasswordChangeController.php');
         } elseif ($_GET['action'] == 'Change_Password') {
             require('controller/account_management/userAccountPasswordChangeController.php');
-            changeAccount_password($_SESSION['id'], $_POST['password']);
         } elseif ($_GET['action'] == 'user_Account_Deletion') {
             require('controller/account_management/userAccountDeletionController.php');
         } elseif ($_GET['action'] == 'Delete_Account') {

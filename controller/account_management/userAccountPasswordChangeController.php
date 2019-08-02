@@ -7,8 +7,13 @@ spl_autoload_register('classLoader');
 
 require('view/backend/user/account_management/passwordChangeView.php');
 
-function changeAccount_password($id, $newPassword) {
-    $accountManager = new AccountManager();
-    $changePassword = $accountManager->changeAccountPassword($id, $newPassword);
-    echo 'done';
+$accountManager = new AccountManager();
+
+if (!empty($_GET['action'] == "Change_Password") && !empty($_POST['password'])) {
+  $password = htmlspecialchars($_POST['password']);
+  $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+  $changePassword = $accountManager->changeAccountPassword($_SESSION['id'], $hashedPassword);
+  require('view/backend/user/account_management/passwordChangeView.php?action=user_Account_Inbox');
+} else {
+  require('view/backend/user/account_management/passwordChangeView.php');
 }
