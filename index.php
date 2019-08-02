@@ -40,10 +40,7 @@ try {
         } elseif ($_GET['action'] == 'user_Account_Deletion') {
             require('controller/account_management/userAccountDeletionController.php');
         } elseif ($_GET['action'] == 'Delete_Account') {
-            if ($_POST['delete'] = true) {
-                require('controller/account_management/userAccountDeletionController.php');
-                deleteAccount($_SESSION['id']);
-            } else {}
+            require('controller/account_management/userAccountDeletionController.php');  
         } elseif ($_GET['action'] == 'user_Account_Inbox') {
             require('controller/account_management/userAccountInboxController.php');
         } elseif ($_GET['action'] == 'Members') {

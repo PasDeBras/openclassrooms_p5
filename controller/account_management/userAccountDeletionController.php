@@ -5,10 +5,12 @@ function classLoader($class)
 }
 spl_autoload_register('classLoader');
 
-require('view/backend/user/account_management/accountDeleteView.php');
+$accountManager = new AccountManager();
 
-function deleteAccount($id) {
-    $accountManager = new AccountManager();
-    $deleteAccount = $accountManager->deleteAccount($id);
-    echo 'done';
+if (!empty($_GET['action'] == "Delete_Account")) {
+  $deleteAccount = $accountManager->deleteAccount($_SESSION['id']);
+  header('Location: index.php?action=auth_Verify_Disconnect');
+} else {
+  require('view/backend/user/account_management/accountDeleteView.php');
 }
+
