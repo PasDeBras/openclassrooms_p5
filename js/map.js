@@ -64,10 +64,29 @@ function initMap() {
     function hiveMaker(hives) {
         hives.forEach(function(hive) {
 
-            let friends = getFriends();
-            if (!friends[hive.account_id] && hive.private == 1){
+            if (complete_map) {
+                let friends = getFriends();
+                if (!friends[hive.account_id] && hive.private == 1){
 
-            } else if ((friends[hive.account_id] && hive.private == 1) || (hive.private == 0)){
+                } else if ((friends[hive.account_id] && hive.private == 1) || (hive.private == 0)){
+                    let marker = new google.maps.Marker({
+                        position : {lat: Number(hive.lat), lng: Number(hive.lng)},
+                        map : map,
+                        title : hive.name,
+                        hiveId : hive.id,
+                        ownerId : hive.account_id,
+                        owner : hive.owner,
+                        address : hive.address,
+                        icon: markerIconSelector(hive.account_id)
+                        
+                    });
+                    marker.addListener("click", function(){
+                    initOverlay(hive);
+                    overlayToggle();
+                    });
+                }
+
+            } else if (account_map) {
                 let marker = new google.maps.Marker({
                     position : {lat: Number(hive.lat), lng: Number(hive.lng)},
                     map : map,
@@ -79,12 +98,12 @@ function initMap() {
                     icon: markerIconSelector(hive.account_id)
                     
                 });
-                // Click on marker brings overlay
                 marker.addListener("click", function(){
                 initOverlay(hive);
-                overlayToggle(); // Overlay ON
+                overlayToggle();
                 });
-            } 
+            };
+            
         
         });
     };
