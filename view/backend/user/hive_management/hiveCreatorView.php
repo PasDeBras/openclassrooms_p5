@@ -45,9 +45,7 @@ if ($context == NULL) {?>
             </div>
         </form>
     </div>
-<?php
-} elseif ($context == 'hiveCreated') {?>
-    <p>Ruche créé.</p>
+
 <?php
 }
 
