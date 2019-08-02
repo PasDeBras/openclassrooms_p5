@@ -60,14 +60,12 @@ if ($context == NULL){
 <?php
     }
     ?></div> <?php
-} elseif ($context == 'hiveEdited') {?>
-    <p>Ruche mise à jour.</p>
-<?php
-} elseif ($context == 'hiveDeleted') {?>
-    <p>Ruche supprimée.</p>
-
-<?php
-}
+} else {?>
+    <div id="context_alertBox">
+        <?php if ($context == "hiveEdited") {?><p>Ruche modifiée</p><?php } elseif ($context == "hiveDeleted") {?><p>Ruche supprimée</p><?php } else {}?>
+    </div>
+    
+    <?php }
 
 $content = ob_get_clean(); ?>
 

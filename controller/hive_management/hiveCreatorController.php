@@ -7,9 +7,8 @@ spl_autoload_register('classLoader');
 
 if (!empty($_POST['hivename']) && !empty($_POST['hiveadress']) && !empty($_POST['hivelat']) && !empty($_POST['hivelng'])) {
     require_once('model/HiveManager.php');
+    $private = 0;
     if (!empty($_POST['private'])) {
-      $private = 0;
-    } else {
       $private = 1;
     }
     $hiveManager = new HiveManager();
