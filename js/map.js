@@ -63,26 +63,42 @@ function initMap() {
     // Marker creation from req
     function hiveMaker(hives) {
         hives.forEach(function(hive) {
-            console.log(hive)
-            let marker = new google.maps.Marker({
-                position : {lat: Number(hive.lat), lng: Number(hive.lng)},
-                map : map,
-                title : hive.name,
-                hiveId : hive.id,
-                ownerId : hive.account_id,
-                owner : hive.owner,
-                address : hive.address,
-                icon: markerIconSelector(hive.account_id)
-            });
-            // Click on marker brings overlay
-            marker.addListener("click", function(){
+
+            let friends = getFriends();
+            if (!friends[hive.account_id] && hive.private == 1){
+
+            } else if ((friends[hive.account_id] && hive.private == 1) || (hive.private == 0)){
+                let marker = new google.maps.Marker({
+                    position : {lat: Number(hive.lat), lng: Number(hive.lng)},
+                    map : map,
+                    title : hive.name,
+                    hiveId : hive.id,
+                    ownerId : hive.account_id,
+                    owner : hive.owner,
+                    address : hive.address,
+                    icon: markerIconSelector(hive.account_id)
+                    
+                });
+                // Click on marker brings overlay
+                marker.addListener("click", function(){
                 initOverlay(hive);
                 overlayToggle(); // Overlay ON
+                });
+            } 
+        
         });
-    });
-    
+    };
 
-};
+
+
+    function getFriends(){
+        let friends = document.querySelectorAll("friend");
+        let friendsObj = {};
+        for (let friend of friends) {
+            friendsObj[friend.innerHTML] = true;
+        }
+        return friendsObj;
+    }
 
 // Map hive overlay
 overlayToggle();
@@ -201,4 +217,5 @@ function overlayToggle()
       } else {
         overlayPanelElt.classList.add('display_none');
       }
-}};
+};
+}

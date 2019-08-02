@@ -45,7 +45,9 @@
                 <p>Créé par Paul Ponnau pour OpenClassrooms dans le cadre du parcours Web Dev<br>Contact & Information: contact@paulponnau.fr.</p>
             </div>
         </footer>
-        <userid><?= $_SESSION['id'] ?></userid> <!-- rplc -->
+        
+        <userid><?= $_SESSION['id'] ?></userid>
+        <friends><?php echo $_SESSION['user_friendlist'];?><friends> <!-- rplc -->
         
         <script src="js/menu.js"></script>
         <?php if (!empty($loadMap))

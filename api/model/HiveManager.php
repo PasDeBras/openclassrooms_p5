@@ -14,11 +14,11 @@ class HiveManager extends Manager
         hive_markers.address AS hiveAddress,
         hive_markers.lat AS hiveLat,
         hive_markers.lng AS hiveLng,
+        hive_markers.private AS isPrivate,
         accounts.username AS hiveOwner
         FROM hive_markers
         INNER JOIN accounts
-        WHERE hive_markers.account_id = accounts.id
-        AND hive_markers.private = 0');
+        WHERE hive_markers.account_id = accounts.id');
         return $hiveMarkers;
     }
 

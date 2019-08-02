@@ -35,8 +35,6 @@ class FriendshiplinksManager extends Manager
     {
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT friendship_links.id AS linkid, 
-        friendship_links.user_1_id AS user1id, 
-        friendship_links.user_2_id AS user2id,
         accounts.id AS accountid, 
         accounts.username AS friendname 
         FROM friendship_links 

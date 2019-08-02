@@ -24,7 +24,8 @@ if ($numberOfHives > 0) {
             "address" => $hiveAddress,
             "lat" => $hiveLat,
             "lng" => $hiveLng,
-            "owner" => $hiveOwner
+            "owner" => $hiveOwner,
+            "private" => $isPrivate
         );
 
         array_push($hives, $hive);
