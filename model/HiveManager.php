@@ -5,67 +5,72 @@ class HiveManager extends Manager
 {
     public function retrieveHiveMarkers()
     {
-        $db = $this->dbConnect();
-        $hiveMarkers = $db->query('SELECT hive_markers.id AS hiveId, 
+        $sql = 'SELECT hive_markers.id AS hiveId, 
         hive_markers.account_id AS hiveAccountId, 
         hive_markers.name AS hiveName,
         hive_markers.address AS hiveAddress,
         hive_markers.lat AS hiveLat,
         hive_markers.lng AS hiveLng,
+        hive_markers.private AS isPrivate,
         accounts.username AS hiveOwner
         FROM hive_markers
         INNER JOIN accounts
-        WHERE hive_markers.account_id = accounts.id
-        AND hive_markers.private = 0');
+        WHERE hive_markers.account_id = accounts.id';
+
+        $hiveMarkers = $this->executeRequest($sql);
         return $hiveMarkers;
     }
 
     public function retrieveHiveMarker($id)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT * FROM hive_markers WHERE id = ?');
-        $req->execute(array($id));
-        return $req;
+        $sql = 'SELECT * FROM hive_markers WHERE id = ?';
+
+        $hiveMarker = $this->executeRequest($sql, array($id));
+        return $hiveMarker;
     }
 
-    public function retrieveAccountHiveMarkers($account_Id)
-    {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT * FROM hive_markers WHERE account_id = ?');
-        $req->execute(array($account_Id));
-        return $req;
+    public function retrieveAccountHiveMarkers($account_Id) {
+        $sql = 'SELECT * FROM hive_markers WHERE account_id = ?';
+
+        $accountHiveMarkers = $this->executeRequest($sql, array($account_Id));
+        return $accountHiveMarkers;
     }
 
     public function addHiveMarker($account_id, $name, $address, $lat, $lng, $private)
     {
-        $db = $this->dbConnect();
-        $markers = $db->prepare('INSERT INTO hive_markers(account_id, name, address, lat, lng, private) VALUES(?, ?, ?, ?, ?, ?)');
-        $executeRequest = $markers->execute(array($account_id, $name, $address, $lat, $lng, $private));
+        $sql = 'INSERT INTO hive_markers(account_id, name, address, lat, lng, private) VALUES(?, ?, ?, ?, ?, ?)';
 
-        return $executeRequest;
+        $hiveMarker = $this->executeRequest($sql, array($account_id, $name, $address, $lat, $lng, $private));
+        return $hiveMarker;
     }
 
     public function updateHiveMarker($id, $name, $address, $lat, $lng)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE hive_markers SET name = :newname, address = :newaddress, lat = :newlat, lng = :newlng WHERE id = :markerid');
-        $req->execute(array(
-            'newname' => $name,
-            'newaddress' => $address,
-            'newlat' => $lat,
-            'newlng' => $lng,
-            'markerid' => $id,
-        ));
-
-        return $req;
+        $sql = 'UPDATE hive_markers 
+        SET name = :newname, 
+        address = :newaddress, 
+        lat = :newlat, 
+        lng = :newlng 
+        WHERE id = :markerid';
+        
+        $hiveMarker = $this->executeRequest(
+            $sql, 
+            array(
+                'newname' => $name,
+                'newaddress' => $address,
+                'newlat' => $lat,
+                'newlng' => $lng,
+                'markerid' => $id,
+            )
+        );
+        return $hiveMarker;
     }
 
     public function deleteHiveMarker($id)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('DELETE FROM hive_markers WHERE `id` = ?');
-        $req->execute(array($id));
-
-        return $req;
+        $sql = 'DELETE FROM hive_markers WHERE `id` = ?';
+        
+        $hiveMarker = $this->executeRequest($sql, array($id));
+        return $hiveMarker;
     }
 }

@@ -5,56 +5,57 @@ require_once('model/Manager.php');
 class AccountManager extends Manager
 {
     public function insertAccount($username, $email, $password, $firstname, $lastname) {
-        $db = $this->dbConnect();
-        $accounts = $db->prepare('INSERT INTO accounts(username, email, password, surname, firstname) VALUES(?, ?, ?, ?, ?)');
-        $executeRequest = $accounts->execute(array($username, $password, $email, $firstname, $lastname));
+        $sql = 'INSERT INTO accounts(username, email, password, surname, firstname) VALUES(?, ?, ?, ?, ?)';
 
-        return $executeRequest;
+        $account = $this->executeRequest($sql, array($username, $password, $email, $firstname, $lastname));
+        return $account;
     }
 
     public function retrieveAccount($email)
     {
-        $db = $this->dbConnect();
-        $account = $db->prepare('SELECT * FROM accounts WHERE email = ?');
-        $account->execute(array($email));
+        $sql = 'SELECT * FROM accounts WHERE email = ?';
+
+        $account = $this->executeRequest($sql, array($email));
         return $account;
     }
 
     public function retrieveAccountPassword($id)
     {
-        $db = $this->dbConnect();
-        $accountPassword = $db->prepare('SELECT password FROM accounts WHERE id = ?');
-        $accountPassword->execute(array($id));
+        $sql = 'SELECT password FROM accounts WHERE id = ?';
+
+        $accountPassword = $this->executeRequest($sql, array($id));
         return $accountPassword;
     }
 
     public function changeAccountPassword($id, $newPassword)
     {
-        $db = $this->dbConnect();
-        $changePassword = $db->prepare('UPDATE accounts SET password = :newpassword WHERE id = :id');
-        $changePassword->execute(array(
-            'newpassword' => $newPassword,
-            'id' => $id
-        ));
+        $sql = 'UPDATE accounts SET password = :newpassword WHERE id = :id';
 
-        return $changePassword;
+        $accountPassword = $this->executeRequest($sql, 
+            array(
+                'newpassword' => $newPassword,
+                'id' => $id
+            )
+        );
+        return $accountPassword;
     }
 
     public function deleteAccount($id) {
-        $db = $this->dbConnect();
-        $deleteAccount = $db->prepare('DELETE FROM accounts WHERE id = ?');
-        $deleteAccount->execute(array($id));
-
-        return $deleteAccount;
+        $sql = 'DELETE FROM accounts WHERE id = ?';
+        
+        $account = $this->executeRequest($sql, array($id));
+        return $account;
     }
 
     public function readAllAccounts() 
     {
-        $db = $this->dbConnect();
-        $req = $db->query('SELECT id, username FROM accounts');
-        return $req;
+        $sql = 'SELECT id, username FROM accounts';
+        
+        $allAccounts = $this->executeRequest($sql);
+        return $allAccounts;
     }
 
     
 
 }
+

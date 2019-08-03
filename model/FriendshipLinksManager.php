@@ -6,53 +6,58 @@ class FriendshiplinksManager extends Manager
 {
     public function createFriendshipLink($user_1_id, $user_2_id)
     {
-        $db = $this->dbConnect();
         $check = $this->checkExistingFriendshipLink($user_1_id, $user_2_id);
         if (!$check) {
-            $req = $db->prepare('INSERT INTO friendship_links(user_1_id, user_2_id) VALUES(?,?)');
-            $req->execute(array($user_1_id, $user_2_id));
-            return $req;
+            $sql = 'INSERT INTO friendship_links(user_1_id, user_2_id) VALUES(?,?)';
+            $friendshipLink = $this->executeRequest($sql, array($user_1_id, $user_2_id));
+            return $friendshipLink;
         } else {
             echo "Friendship already exist";
         }    
     }
 
-    public function checkExistingFriendshipLink($myId, $friendId){
-        
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id 
+    public function checkExistingFriendshipLink($myId, $friendId)
+    {
+        $sql = 'SELECT id 
         FROM friendship_links 
         WHERE (user_1_id = :myId AND user_2_id = :friendId)
-        OR (user_2_id = :myId AND user_1_id = :friendId)');
-        $req->execute(array(
-            'myId'=>$myId, 
-            'friendId'=>$friendId));
+        OR (user_2_id = :myId AND user_1_id = :friendId)';
 
-        return $req->rowCount()>0;
+        $friendshipLink = $this->executeRequest(
+            $sql, 
+            array(
+                'myId'=>$myId, 
+                'friendId'=>$friendId
+            )
+        );
+        return $friendshipLink->rowCount()>0;
     }
 
     public function readFriendshipLinks($userId)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT friendship_links.id AS linkid, 
+        $sql = 'SELECT friendship_links.id AS linkid, 
         accounts.id AS accountid, 
         accounts.username AS friendname 
         FROM friendship_links 
         INNER JOIN accounts 
         ON (friendship_links.user_1_id = :id AND accounts.id = friendship_links.user_2_id)
-        OR (friendship_links.user_2_id = :id AND accounts.id = friendship_links.user_1_id)');
-        $req->execute(array(
-            'id'=>$userId));
-        return $req;
+        OR (friendship_links.user_2_id = :id AND accounts.id = friendship_links.user_1_id)';
+
+        $friendshipLinks = $this->executeRequest(
+            $sql, 
+            array(
+                'id'=>$userId
+            )
+        );
+        return $friendshipLinks;
     }
 
     public function deleteFriendshipLink($friendshipLinkId)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('DELETE FROM friendship_links WHERE id = ?');
-        $req->execute(array($friendshipLinkId));
+        $sql = 'DELETE FROM friendship_links WHERE id = ?';
+        $friendshipLink = $this->executeRequest($sql, array($friendshipLinkId));
 
-        return $req;
+        return $friendshipLink;
     }
 
 }
