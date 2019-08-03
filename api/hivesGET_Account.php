@@ -5,7 +5,7 @@ header("Access-Control-Allow-Origin: *");
 
 include_once './model/HiveManager.php'; // ***
 
-$hives = new OpenClassrooms\P5\Model\HiveManager();
+$hives = new HiveManager();
 
 $result = $hives->retrieveAccountHiveMarkers($_GET['userid']);
 $numberOfHives = $result->rowCount();
